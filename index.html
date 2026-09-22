@@ -371,6 +371,30 @@
       .stack-grid { gap:30px; }
       footer .shell { flex-direction:column; }
     }
+  
+    /* Interview question bank */
+    .qa-jumps { display:flex; flex-wrap:wrap; gap:12px; margin:26px 0 34px; }
+    .qa-jump { padding:12px 18px; border:3px solid var(--line); background:var(--topic,var(--paper)); box-shadow:var(--shadow-small); color:var(--ink); text-decoration:none; font:700 12px/1 "IBM Plex Mono",monospace; }
+    .qa-jump:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--line); }
+    .qa-topic { margin-bottom:44px; scroll-margin-top:24px; }
+    .qa-topic-head { display:inline-block; margin:0 0 20px; padding:12px 20px; border:3px solid var(--line); background:var(--topic); box-shadow:var(--shadow-small); font:400 22px/1.2 "Archivo Black",sans-serif; transform:rotate(-1deg); }
+    .qa-count { display:block; margin-top:6px; font:700 11px/1 "IBM Plex Mono",monospace; }
+    .qa { border:3px solid var(--line); background:var(--paper); box-shadow:4px 4px 0 var(--line); margin-bottom:12px; }
+    .qa summary { display:flex; gap:12px; align-items:center; padding:14px 16px; cursor:pointer; list-style:none; font-weight:700; font-size:14px; line-height:1.4; }
+    .qa summary::-webkit-details-marker { display:none; }
+    .qa summary::marker { content:""; }
+    .qa summary:hover { background:var(--yellow); }
+    .qa[open] summary { background:var(--topic-soft); border-bottom:3px solid var(--line); }
+    .qnum { flex:none; padding:7px 9px; border:2px solid var(--line); background:var(--paper); font:700 11px/1 "IBM Plex Mono",monospace; }
+    .qa[open] .qnum { background:var(--topic); }
+    .qa-a { padding:16px 18px; font-size:14px; line-height:1.7; }
+    .qa-a p { margin:0 0 12px; }
+    .qa-a p:last-child { margin-bottom:0; }
+    .qa-code { margin:0 0 12px; padding:12px 14px; background:var(--ink); color:var(--paper); border:3px solid var(--line); font:700 12px/1.5 "IBM Plex Mono",monospace; overflow-x:auto; white-space:pre-wrap; }
+    .qa-code:last-child { margin-bottom:0; }
+    .interview-more { display:inline-block; margin-top:14px; padding:10px 16px; border:3px solid var(--line); background:var(--yellow); box-shadow:3px 3px 0 var(--line); color:var(--ink); text-decoration:none; font:700 12px/1 "IBM Plex Mono",monospace; }
+    .interview-more:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--line); }
+
   </style>
 </head>
 <body>
@@ -381,7 +405,8 @@
     <a href="#phase-3" aria-label="Phase 3: Cloud and Kubernetes" style="--rail-color:var(--amber)">03</a>
     <a href="#phase-4" aria-label="Phase 4: Infrastructure as Code and Observability" style="--rail-color:var(--violet)">04</a>
     <a href="#phase-5" aria-label="Phase 5: Get hired" style="--rail-color:var(--rose)">05</a>
-  </nav>
+      <a href="#interview" aria-label="Interview question bank" style="--rail-color:var(--blue)">Q&amp;A</a>
+</nav>
   <main>
     <section class="hero">
       <div class="shell hero-grid">
@@ -494,12 +519,972 @@
         <article class="week"><div class="week-top"><span class="week-id">WEEK 13</span><h3>Capstone project</h3><ul class="topics"><li>architecture</li><li>automation</li><li>README</li><li>trade-offs</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=Kbvch_swZWA" target="_blank" rel="noopener noreferrer">Live K8s + ArgoCD project</a><a href="https://www.youtube.com/watch?v=NJZKEme-8AE" target="_blank" rel="noopener noreferrer">Alt · Jenkins → Ansible → Docker</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Ship the full flow above with setup steps and a clear architecture diagram.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>A stranger can deploy it from the README alone.</p></div></div></div></article>
         <article class="week"><div class="week-top"><span class="week-id">WEEK 14</span><h3>Resume + applications</h3><ul class="topics"><li>one-page resume</li><li>GitHub</li><li>LinkedIn</li><li>interviews</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH + READ</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=zxZHOEdGE08" target="_blank" rel="noopener noreferrer">DevOps interview Q&amp;A</a><a href="https://www.guru99.com/hi/devops-interview-questions.html" target="_blank" rel="noopener noreferrer">Top 50 questions in Hindi</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>EXECUTE</b><p>Lead with projects, add measurable outcomes, and send five tailored applications a day.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Resume reviewed, profiles polished, first 10 applications sent.</p></div></div></div></article>
       </div>
-      <div class="interview"><div><span class="section-tag">INTERVIEW DRILL</span><h3>Explain it without hiding behind commands.</h3><p class="lede">Answer out loud, then sketch the system.</p></div><ul class="question-list"><li>What is CI/CD?</li><li>Image vs container?</li><li>Explain a Deployment.</li><li>How do you manage Terraform state?</li><li>Blue-green vs rolling?</li><li>Debug CrashLoopBackOff?</li></ul></div>
+      <div class="interview"><div><span class="section-tag">INTERVIEW DRILL</span><h3>Explain it without hiding behind commands.</h3><p class="lede">Answer out loud, then sketch the system.</p></div><ul class="question-list"><li>What is CI/CD?</li><li>Image vs container?</li><li>Explain a Deployment.</li><li>How do you manage Terraform state?</li><li>Blue-green vs rolling?</li><li>Debug CrashLoopBackOff?</li></ul><a class="interview-more" href="#interview">Browse all 230 questions &#8595;</a></div>
     </div></section>
 
     <section class="stack"><div class="shell stack-grid">
       <div><span class="section-tag">YOUR STACK</span><h2>Fourteen tools.<br>One working system.</h2><p class="lede">Learn tools in context, not as disconnected tutorials.</p></div>
       <div class="badge-grid" aria-label="Tools covered"><span class="badge">Linux</span><span class="badge">Bash</span><span class="badge">Git</span><span class="badge">YAML</span><span class="badge">Nginx</span><span class="badge">Docker</span><span class="badge">Compose</span><span class="badge">GitHub Actions</span><span class="badge">AWS</span><span class="badge">Kubernetes</span><span class="badge">Helm</span><span class="badge">Terraform</span><span class="badge">Prometheus</span><span class="badge">Grafana</span></div>
+    </div></section>
+    <section class="phase" id="interview"><div class="shell">
+      <header class="phase-head"><div class="phase-number" style="font-size:clamp(30px,4vw,46px)">Q&amp;A</div><h2>Interview question bank</h2><span class="phase-meta">230 Q&amp;A</span></header>
+      <p class="lede">Two hundred and thirty interview questions across the three tools that decide most DevOps interviews. Read the question, answer out loud, then open the answer.</p>
+      <nav class="qa-jumps" aria-label="Jump to question topic">
+        <a class="qa-jump" href="#qa-docker" style="--topic:var(--blue)">Docker · 60</a>
+        <a class="qa-jump" href="#qa-k8s" style="--topic:var(--violet)">Kubernetes · 100</a>
+        <a class="qa-jump" href="#qa-terraform" style="--topic:var(--amber)">Terraform · 70</a>
+      </nav>
+<div class="qa-topic" id="qa-docker" style="--topic:var(--blue);--topic-soft:var(--blue-soft)">
+<h3 class="qa-topic-head">Docker <span class="qa-count">60 questions</span></h3>
+<details class="qa"><summary><span class="qnum">Q1</span><span>Why was Docker created when VMs already existed?</span></summary><div class="qa-a">
+<p>VMs isolate entire operating systems; each VM needs a guest kernel and supporting services. Docker packages an application and its user-space dependencies while sharing the host kernel, reducing startup time and resource overhead.</p>
+<p>Its main contribution was a practical, repeatable build-and-distribution workflow around containers. Containers existed before Docker. VMs still provide a stronger isolation boundary, and production commonly runs containers inside VMs.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q2</span><span>What problem does containerization solve?</span></summary><div class="qa-a">
+<p>Containerization reduces the &quot;works on my machine&quot; problem by shipping the same application, libraries and runtime as a versioned image. It improves deployment consistency, dependency isolation and rollback reproducibility.</p>
+<p>It does not package the host kernel or make external databases, secrets and networking identical. A job-ready deployment pins image versions or digests and supplies environment-specific configuration separately.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q3</span><span>What happens internally when you run docker run nginx?</span></summary><div class="qa-a">
+<p>The CLI sends a request to dockerd. If nginx:latest is absent locally, Docker resolves and pulls its manifest and missing layers. It prepares a writable filesystem, network, mounts and container configuration.</p>
+<p>Docker uses containerd and an OCI runtime such as runc to create isolation and launch the configured process. Nginx runs in the foreground; the CLI attaches by default. Port 80 is not automatically published to the host without a -p option.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q4</span><span>What are Linux namespaces?</span></summary><div class="qa-a">
+<p>Linux namespaces give processes separate views of kernel-managed resources. A process can see its own process tree, network interfaces or mount table even though the same kernel serves other containers.</p>
+<p>Namespaces provide visibility isolation; they do not set CPU or memory quotas. Those are cgroup responsibilities. A namespace is also not a separate kernel, so kernel vulnerabilities remain relevant to container isolation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q5</span><span>What namespaces does Docker use?</span></summary><div class="qa-a">
+<p>Common namespaces are PID for process IDs, NET for networking, MNT for mounts, UTS for hostname and IPC for shared-memory/message resources. A cgroup namespace virtualizes the visible cgroup hierarchy where supported.</p>
+<p>USER namespaces map container identities to different host identities, especially with rootless mode or userns-remap. The exact set depends on configuration; host networking or host PID mode deliberately shares the corresponding host namespace.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q6</span><span>What are cgroups?</span></summary><div class="qa-a">
+<p>Control groups, or cgroups, organize processes so the kernel can account for and control resources such as CPU, memory, process counts and I/O. A container&#x27;s processes are placed into configured cgroups.</p>
+<p>Namespaces answer &quot;what can this process see?&quot;; cgroups answer &quot;what can it consume?&quot; Limits and accounting differ between cgroup v1 and v2, so troubleshooting starts by checking the host&#x27;s cgroup version and actual controller settings.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q7</span><span>How does Docker limit CPU and memory?</span></summary><div class="qa-a">
+<p>Docker translates resource flags into cgroup settings. A memory limit constrains accounted memory; allocation pressure can trigger an OOM kill. A CPU quota limits runtime over a period, so excessive CPU demand normally causes throttling rather than a kill.</p>
+<p>Example: docker run --memory=512m --cpus=1.5 nginx</p>
+<p>CPU shares express relative weight under contention, not a hard cap. Swap behavior also depends on Docker flags and host configuration.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q8</span><span>Difference between containerd, runc and Docker?</span></summary><div class="qa-a">
+<p>Docker is the user-facing platform: CLI, daemon, image workflow, networking and volume management. containerd is a lower-level service that manages image content, snapshots and container lifecycle.</p>
+<p>runc is an OCI runtime that creates namespaces/cgroups and starts the process. A shim supervises the task after runtime setup. Kubernetes can use containerd through CRI without dockerd; containerd and Docker are not interchangeable interfaces.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q9</span><span>Explain Docker architecture end-to-end.</span></summary><div class="qa-a">
+<p>The Docker CLI talks to dockerd through its API. The daemon coordinates image operations, networks, volumes and container requests. A registry supplies image manifests and blobs; BuildKit performs modern builds.</p>
+<p>For execution, dockerd delegates to containerd, which uses snapshotters and OCI runtimes to prepare and start tasks. The Linux kernel supplies actual isolation and resource enforcement. Logging drivers handle application output. On Docker Desktop, Linux containers normally run inside a Linux VM.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q10</span><span>What happens when a container starts?</span></summary><div class="qa-a">
+<p>Starting an existing container reuses its configuration and writable filesystem. The runtime prepares its namespaces, mounts, networking, security settings and cgroups, then launches ENTRYPOINT/CMD as the container&#x27;s main process.</p>
+<p>This differs from docker run, which creates a new container first. When the main process exits, the container stops. Graceful shutdown requires signal handling and child-process reaping; an init process can help applications that do not perform those duties.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q11</span><span>What is an image layer?</span></summary><div class="qa-a">
+<p>An image layer is a content-addressed filesystem change set, such as files added by COPY or a package installation. Layers stack with image metadata to describe a runnable filesystem.</p>
+<p>Images can share identical layers, saving transfer and disk space. Not every Dockerfile instruction adds filesystem content: instructions such as CMD primarily change metadata. Container writes go into a separate writable layer rather than modifying the image layers.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q12</span><span>Why are Docker images immutable?</span></summary><div class="qa-a">
+<p>Image content is identified by cryptographic digests. Changing content creates a different digest and therefore a different image identity. This makes sharing, caching and reproducible deployment possible.</p>
+<p>Tags are mutable labels: app:latest can point to a different image tomorrow. Immutability refers to digest-addressed content, not to a tag. A running container can modify its writable layer without changing the original image.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q13</span><span>How does Docker layer caching work?</span></summary><div class="qa-a">
+<p>BuildKit reuses a build result when an operation and its relevant inputs match a cached result. COPY depends on source content; RUN depends on its command, configuration and preceding filesystem inputs.</p>
+<p>Place stable dependency manifests before frequently changing source code. A normal cached RUN does not detect that an external package repository changed. Cache mounts accelerate downloads, and remote cache export/import helps ephemeral CI runners reuse previous work.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q14</span><span>Why are some image builds slow?</span></summary><div class="qa-a">
+<p>Slow builds often come from large build contexts, invalidated dependency layers, repeated downloads, compilation, slow disks or cross-architecture emulation. A changed early COPY can force expensive later work to run again.</p>
+<p>Use docker build --progress=plain . to identify the slow step. Add .dockerignore, copy dependency manifests first, reuse BuildKit caches and build on native architecture when practical. Measure cold and warm builds separately before deciding the bottleneck is solved.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q15</span><span>Explain Union File System.</span></summary><div class="qa-a">
+<p>A union filesystem presents several filesystem layers as one merged directory tree. Read-only image layers supply existing files; a writable upper layer contains runtime changes.</p>
+<p>OverlayFS is a common Linux implementation. A file may be copied into the upper layer before modification; deletion uses a marker that hides the lower file. The original bytes can remain in lower layers, which explains why deleting files in a later image layer may not shrink an image.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q16</span><span>Why should Dockerfiles have fewer layers?</span></summary><div class="qa-a">
+<p>Fewer layers are not automatically better. What matters is final size, cache reuse, reproducibility and maintainability. Combining package installation with cleanup in the same RUN prevents caches from remaining in an earlier layer.</p>
+<p>Combining unrelated work into one huge RUN can damage caching and debugging. Multi-stage builds remove build-only dependencies more effectively than blindly minimizing instruction count. Metadata-only instructions are not equivalent to large filesystem layers.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q17</span><span>What is a dangling image?</span></summary><div class="qa-a">
+<p>A dangling image has no tag and is typically left behind when a tag moves to a newly built image. An untagged image is not necessarily safe to remove because containers may still reference it.</p>
+<p>Inspect candidates with docker image ls --filter dangling=true. Docker&#x27;s image-prune operation applies its own reference checks. Dangling is narrower than &quot;unused&quot;: a tagged image can also be unused by containers.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q18</span><span>What is an orphaned layer?</span></summary><div class="qa-a">
+<p>An orphaned layer informally means storage content no longer reachable from a retained image, container or build-cache reference. It is not the same as an image with no tag.</p>
+<p>Docker/containerd garbage collection tracks references and leases before reclaiming content. Investigate with docker system df -v and supported cache/storage tools. Manually deleting layer directories can break shared images and metadata, so cleanup must respect the storage engine&#x27;s reference graph.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q19</span><span>How would you reduce a 2GB image to 200MB?</span></summary><div class="qa-a">
+<p>First inspect size with docker history --no-trunc IMAGE and a layer-analysis tool. Move compilers, headers and package managers into a build stage; copy only runtime artifacts into a compatible minimal final image.</p>
+<p>Exclude source caches, tests and node_modules from the build context when inappropriate; install production dependencies and remove package caches in the same layer. Validate libraries, certificates, architecture and startup behavior. A 200MB target is workload-dependent, not guaranteed.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q20</span><span>Explain multi-stage builds internally.</span></summary><div class="qa-a">
+<p>Each FROM starts a separate build stage with its own filesystem state. COPY --from=builder transfers selected artifacts from another stage into the current one.</p>
+<p>The final image contains its own base and copied artifacts; it does not inherit all builder layers. BuildKit evaluates needed stages and can cache intermediate results separately. A common example compiles a Go binary in a compiler image and copies it into a small runtime image with required CA certificates.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q21</span><span>What happens if a container crashes?</span></summary><div class="qa-a">
+<p>When the main process crashes, the container becomes stopped and records an exit status. Its writable layer remains while that container exists; a restart normally reuses it. A replacement container gets a new writable layer.</p>
+<p>Restart policies may restart the process, but do not fix its cause. Named volumes outlive container removal unless explicitly deleted. tmpfs contents are ephemeral. Buffered or uncommitted application data can still be lost even when the storage survives.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q22</span><span>Where is container data stored?</span></summary><div class="qa-a">
+<p>Image content and writable container filesystems live in Docker&#x27;s managed storage. Named volumes have their own storage locations or external drivers; bind mounts use the specified host path. tmpfs uses memory and may be swapped depending on the host.</p>
+<p>Use docker info and docker inspect CONTAINER to discover the actual configuration. Classic installations often use /var/lib/docker; containerd-backed installations also use containerd-managed content/snapshots. Docker Desktop stores Linux data inside its VM.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q23</span><span>Difference between volume, bind mount and tmpfs?</span></summary><div class="qa-a">
+<p>A volume is managed through Docker and is suitable for persistent application data. A bind mount exposes a specific host file or directory, making it useful for source code or host configuration but dependent on host paths and permissions.</p>
+<p>A tmpfs mount is temporary, memory-backed storage removed when the container stops. All three mount over the target path, hiding underlying image files there. Storage persistence and backup responsibilities differ for each type.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q24</span><span>Why are volumes preferred?</span></summary><div class="qa-a">
+<p>Volumes separate persistent data from a container&#x27;s replaceable writable layer. They avoid copy-on-write overhead for mounted data and can use storage drivers for remote or managed backends.</p>
+<p>They are easier to attach consistently than arbitrary host directories, but are not automatically backed up, encrypted or portable. Production still needs permission management, application-consistent backups, capacity monitoring and restore tests. Bind mounts remain appropriate where explicit host integration is required.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q25</span><span>How would you migrate Docker volumes between servers?</span></summary><div class="qa-a">
+<p>Identify the volume, driver, application version, ownership and mount target. Quiesce writes or use the database&#x27;s native backup so the export is consistent. Copy or snapshot the volume while preserving permissions and required extended attributes.</p>
+<p>Create compatible destination storage, restore the data and start the same compatible application version. Verify row counts/checksums and application health before switching traffic. Keep the original copy until recovery is verified; never treat a live database directory copy as automatically consistent.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q26</span><span>Explain OverlayFS.</span></summary><div class="qa-a">
+<p>OverlayFS merges lower read-only directories with an upper writable directory into a merged mount. A work directory supports its internal operations. Reads use the visible upper file or fall through to lower layers.</p>
+<p>When modifying a lower-layer file, OverlayFS generally performs copy-up; deletions create whiteouts. This can amplify I/O for large files. Docker&#x27;s classic overlay2 driver and containerd&#x27;s overlayfs snapshotter both use OverlayFS concepts but have different storage management.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q27</span><span>What happens when a container writes data?</span></summary><div class="qa-a">
+<p>Writes to ordinary container paths go to its writable filesystem layer. Modifying an image file can trigger copy-up, while creating a new file writes directly into the upper layer. Deletion hides lower-layer content rather than changing the image.</p>
+<p>Writes to a volume or bind mount go to that mounted storage instead. tmpfs writes consume memory-backed space. This is why databases should generally use persistent mounts rather than the container&#x27;s copy-on-write layer.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q28</span><span>Why can containers experience disk pressure?</span></summary><div class="qa-a">
+<p>Images, build caches, writable layers, volumes and unrotated logs all consume host storage. Inodes can run out even when free bytes remain. Deleted files kept open by processes also continue occupying space.</p>
+<p>Compare df -h, df -i and docker system df -v. Check log growth and application temporary files. Multiple containers share host capacity, so one runaway workload can create pressure for unrelated services unless monitoring, rotation and storage boundaries exist.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q29</span><span>How would you troubleshoot volume corruption?</span></summary><div class="qa-a">
+<p>First distinguish real corruption from permission errors, a wrong mount, full storage or an incompatible application version. Collect application, kernel and storage-backend errors; check whether other workloads on the same device are affected.</p>
+<p>Stop unsafe writes and preserve a snapshot or copy. Use the database/filesystem&#x27;s supported integrity tools, with filesystem repair performed offline where required. Restore a known-good backup if repair is uncertain, then validate data and investigate the underlying storage failure.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q30</span><span>What happens if Docker storage fills up?</span></summary><div class="qa-a">
+<p>Full storage can prevent image pulls, builds, log writes and application writes. Databases may reject transactions or fail; Docker metadata operations can also break. A full inode table produces similar symptoms.</p>
+<p>Check bytes and inodes, identify the fastest-growing paths and expand capacity or remove confirmed disposable caches/logs through supported mechanisms. Avoid indiscriminate volume pruning. Restore headroom, verify application data integrity and add growth alerts and log-retention limits.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q31</span><span>Explain Docker networking architecture.</span></summary><div class="qa-a">
+<p>On Linux, Docker commonly gives each container a network namespace and a virtual Ethernet pair connected to a host bridge. Routes, forwarding rules and NAT connect that network to external destinations.</p>
+<p>User-defined bridge networks provide scoped DNS-based name resolution. Published ports expose selected container ports through host networking rules. Other drivers include host, none, overlay, macvlan and ipvlan. Firewall implementation and rootless networking depend on the installation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q32</span><span>Difference between bridge, host and overlay networks?</span></summary><div class="qa-a">
+<p>Bridge networking connects containers through a software bridge, typically on one host, with separate network namespaces. Host mode shares the host network stack, so container port binding can conflict with host services and -p is unnecessary.</p>
+<p>Overlay networking connects workloads across hosts through encapsulation and coordination, commonly with Docker Swarm. It adds cross-host reachability but requires correct underlay routing, firewall openings and MTU. It is not simply another name for a local bridge.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q33</span><span>How do containers communicate?</span></summary><div class="qa-a">
+<p>Containers on the same user-defined Docker network can normally communicate using container names or aliases and the destination container port. They do not need host port publishing for that internal path.</p>
+<p>Containers on separate networks need an explicitly supported route or shared network. Across hosts, use an overlay network or routable external/service endpoints. Inside a container, localhost refers to that container&#x27;s network namespace, not automatically to another container or the host.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q34</span><span>Why can two containers on same host fail to communicate?</span></summary><div class="qa-a">
+<p>Being on the same host does not guarantee being on the same network. Check docker network inspect NETWORK and both containers&#x27; attachments. Confirm the destination process is listening on the expected port and on a reachable address, not only 127.0.0.1.</p>
+<p>Then test name resolution, direct IP connectivity, routes and host firewall rules. Other causes include a stopped destination, duplicate subnets, an MTU mismatch or application-level TLS/authentication errors mistaken for networking failure.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q35</span><span>How does Docker DNS work?</span></summary><div class="qa-a">
+<p>On user-defined networks, Docker provides embedded DNS, commonly exposed at 127.0.0.11 inside the container. It resolves container names and network aliases and forwards external queries to configured resolvers.</p>
+<p>The default bridge has different name-resolution behavior and does not offer the same automatic container-name discovery. Inspect /etc/resolv.conf and compare internal and external queries. A host loopback DNS address may not be reachable from a container&#x27;s separate namespace.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q36</span><span>Explain container-to-container communication.</span></summary><div class="qa-a">
+<p>On a common bridge, traffic leaves the source container through its veth interface, crosses the host bridge and enters the destination&#x27;s veth interface. The destination application must listen on a reachable interface and container port.</p>
+<p>Name resolution maps a network alias to the destination address before connection setup. Publishing a host port is not required for this path. For different hosts, an overlay or routed underlay carries packets between their local container networks.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q37</span><span>What happens during port mapping?</span></summary><div class="qa-a">
+<p>With -p 8080:80, Docker arranges forwarding from host port 8080 to container port 80, commonly using destination NAT and sometimes a user-space proxy depending on the setup. Return traffic is tracked for the reverse translation.</p>
+<p>EXPOSE is image metadata; it does not publish a port. Binding specifically to 127.0.0.1 limits exposure to host loopback. A default publication can expose the port on all host interfaces, subject to firewall and routing behavior.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q38</span><span>How does NAT work in Docker?</span></summary><div class="qa-a">
+<p>For outbound bridge traffic, masquerading commonly changes the source container address to a host address so replies can return through the host. Connection tracking remembers the mapping.</p>
+<p>For inbound published ports, destination NAT translates a host address/port to the selected container address/port. Same-bridge container traffic usually does not need this NAT. NAT is address translation, not encryption, authentication or an adequate substitute for an explicit firewall policy.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q39</span><span>Why might container networking suddenly stop?</span></summary><div class="qa-a">
+<p>Common causes are a firewall reload removing rules, changed routes, overlapping VPN subnets, exhausted conntrack entries, failed DNS, bridge changes or host resource exhaustion. A daemon or host upgrade may also change networking behavior.</p>
+<p>Determine whether failure affects one container, one network or the whole host. Compare DNS, direct IP and published-port paths separately. Preserve events and rule counters before restarting components, because a restart may erase useful evidence or disrupt healthy traffic.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q40</span><span>How would you troubleshoot packet drops?</span></summary><div class="qa-a">
+<p>Locate the loss: application socket, container interface, bridge, host interface or remote network. Check ip -s link, ss -s, firewall counters, conntrack usage and NIC drop/error counters.</p>
+<p>Capture the same flow at successive interfaces with tcpdump and compare retransmissions, resets and missing packets. Verify MTU, CPU saturation and receive queues. A timeout alone does not prove packet loss; a slow server or overloaded connection pool can produce the same symptom.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q41</span><span>How secure are containers compared to VMs?</span></summary><div class="qa-a">
+<p>Containers share the host kernel, so a kernel escape can compromise the host and neighboring containers. VMs normally add a separate guest kernel and hypervisor boundary, usually stronger for mutually untrusted workloads.</p>
+<p>Container security depends on patching, least privilege, capabilities, seccomp, MAC policies and mount restrictions. Containers inside VMs combine packaging efficiency with another isolation layer. Neither containers nor VMs are automatically secure merely because they provide isolation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q42</span><span>What is rootless Docker?</span></summary><div class="qa-a">
+<p>Rootless Docker runs the daemon and containers without host root privileges, using a user namespace and subordinate UID/GID mappings. This reduces the impact of a daemon or container compromise.</p>
+<p>It differs from setting USER in an image, which only changes the container process identity. Rootless networking, privileged ports, filesystem support and resource-limit support have host-specific constraints. Validate those requirements before choosing rootless mode for a workload.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q43</span><span>Why is running containers as root dangerous?</span></summary><div class="qa-a">
+<p>Container root is powerful within its namespace. Without user-namespace remapping, UID 0 may correspond to host UID 0, although capabilities, namespaces and security policies still restrict it.</p>
+<p>Writable host mounts, privileged mode or access to the Docker socket can turn a compromise into host control. Run the application as a non-root UID, drop unnecessary capabilities and avoid sensitive host mounts. Non-root execution reduces risk but does not eliminate kernel vulnerabilities.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q44</span><span>How would you scan images for vulnerabilities?</span></summary><div class="qa-a">
+<p>Scan the exact image digest with an image scanner such as Trivy, Grype or Docker Scout. Example: trivy image IMAGE. Review operating-system and application dependencies, severity, exploitability and fixed versions.</p>
+<p>Generate an SBOM, scan in CI and rescan deployed digests as vulnerability databases change. Rebuild from patched bases and test compatibility. A clean scan is not proof of safety: configuration flaws, embedded secrets and unknown vulnerabilities need separate controls.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q45</span><span>How do you prevent secrets from entering images?</span></summary><div class="qa-a">
+<p>Keep credentials out of COPY, committed files and build arguments that may leak into history, cache or provenance. Use .dockerignore to exclude local secret files and BuildKit secret or SSH mounts for build-time access.</p>
+<p>A RUN using --mount=type=secret can access a temporary secret, but the command must not copy it into output or print it. Runtime secrets should be supplied separately through controlled mounts or a secret manager. Rotate credentials if exposure occurs.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q46</span><span>Explain image signing.</span></summary><div class="qa-a">
+<p>Image signing binds an image digest to a cryptographic signature and trusted identity. Verification checks that the artifact was signed by an accepted publisher and has not changed.</p>
+<p>Tools such as Cosign or Notation support modern signing workflows. Policy must define accepted identities, issuers or keys and enforce verification before deployment. Signing does not scan for vulnerabilities or prove the application is correct; a trusted pipeline can still produce flawed software.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q47</span><span>Explain Docker Content Trust.</span></summary><div class="qa-a">
+<p>Docker Content Trust is Docker&#x27;s older Notary v1/TUF-based mechanism for signed tag-to-digest metadata. Historically, DOCKER_CONTENT_TRUST=1 enabled client enforcement for supported commands, with special handling for explicit digests.</p>
+<p>DCT is being retired, so new supply-chain designs should use supported modern signing and verification workflows such as Cosign or Notation. Digest pinning guarantees content identity, but it does not independently prove who published the image.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q48</span><span>What are seccomp profiles?</span></summary><div class="qa-a">
+<p>Seccomp filters the system calls a process can invoke. Docker&#x27;s default profile blocks selected dangerous or unnecessary calls while allowing common application behavior.</p>
+<p>A custom profile can restrict the syscall surface further, but must be tested against the application. seccomp is different from capabilities: a process may lack a capability even when a syscall is allowed. Disabling the profile with an unconfined setting removes an important protection and should not be a routine troubleshooting fix.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q49</span><span>What are AppArmor profiles?</span></summary><div class="qa-a">
+<p>AppArmor is a Linux mandatory access-control system that applies profiles to processes, restricting actions such as file access, execution and selected kernel interactions. Docker can apply a profile to containers on supported hosts.</p>
+<p>It complements namespaces, capabilities and seccomp. An &quot;operation not permitted&quot; error may come from a profile denial; kernel/audit logs help identify it. Adjust only the specific access needed, rather than removing the entire policy.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q50</span><span>How would you harden Docker in production?</span></summary><div class="qa-a">
+<p>Use patched hosts and minimal, digest-pinned images; scan dependencies and verify trusted publishers. Run as non-root, avoid privileged mode, drop capabilities and enforce seccomp plus AppArmor/SELinux where supported.</p>
+<p>Restrict daemon/socket access, mount only necessary paths and use a read-only root filesystem where practical. Apply resource limits, network boundaries and managed secrets. Centralize logs, rotate local logs, monitor resource use and test backup restoration. Rootless mode adds protection where its constraints fit.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q51</span><span>A container restarts every 2 minutes. How do you troubleshoot?</span></summary><div class="qa-a">
+<p>Start with docker ps -a, docker inspect CONTAINER and docker logs --since 10m CONTAINER. Correlate exit time, exit code, OOMKilled, restart count, restart policy and Docker events with the two-minute interval.</p>
+<p>Check memory limits, dependency timeouts, scheduled work and external supervisors. An unhealthy Docker health check alone does not restart a standalone container. Fix the demonstrated cause, then verify stability for several recurrence periods instead of just increasing restart delays.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q52</span><span>A container works locally but fails in Kubernetes.</span></summary><div class="qa-a">
+<p>Compare image digest, architecture, command, environment, secrets, user IDs, volumes and network access. Kubernetes may add restrictive security settings, resource limits and probes that do not exist locally.</p>
+<p>Use kubectl describe pod POD, kubectl logs POD -c CONTAINER and kubectl logs POD -c CONTAINER --previous. Check events for image, mount and scheduling failures. Also inspect binding to localhost and writable-path assumptions. Reproduce the failing runtime conditions before changing the image blindly.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q53</span><span>Container memory usage continuously increases.</span></summary><div class="qa-a">
+<p>Compare process RSS, cgroup memory, cache and application heap over time. docker stats is a starting point; profiling is needed to distinguish a leak from cache growth or increased traffic.</p>
+<p>Check OOM events, allocation stacks, connection pools and unbounded queues. Apply a bounded cache or fix retained objects; use a temporary restart or scale-out only as mitigation. Confirm that memory returns to a stable baseline after sustained load and a quiet period.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q54</span><span>Docker host disk usage suddenly hits 100%.</span></summary><div class="qa-a">
+<p>Check df -h, df -i and docker system df -v, then locate rapidly growing logs, caches or volume data. Also inspect deleted-but-open files with lsof +L1 where available.</p>
+<p>Protect database volumes and free only confirmed disposable content. Expand storage if cleanup cannot safely restore headroom. Verify application writes and data integrity afterward. Prevent recurrence with log rotation, cache retention, disk/inode alerts and capacity planning based on growth rate.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q55</span><span>Application logs disappeared after restart.</span></summary><div class="qa-a">
+<p>A restart of the same container normally preserves its writable layer; replacement removes that assumption. First establish whether the container was restarted, recreated, removed or rescheduled. Check the log driver, rotation settings and application log path.</p>
+<p>Logs written only to tmpfs, an old writable layer or an unmounted directory may disappear. Write application output to stdout/stderr and ship it to centralized storage with retention. Persistent audit logs may need dedicated durable storage and delivery guarantees.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q56</span><span>Docker daemon crashes on production host.</span></summary><div class="qa-a">
+<p>Check systemctl status docker, journalctl -u docker, kernel OOM messages, disk capacity and recent configuration changes. Determine whether workloads still run under containerd/shims; daemon failure does not always kill every process.</p>
+<p>Recover the daemon with a known-good configuration while preserving its data directories. Live restore can reduce impact when preconfigured, but has limitations. Validate container management, network rules and logs after recovery, then fix the trigger and monitor daemon health.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q57</span><span>Containers cannot resolve DNS names.</span></summary><div class="qa-a">
+<p>Compare a direct IP connection with DNS queries. Inspect /etc/resolv.conf inside the container, Docker network membership and the embedded resolver. Test both an internal container alias and an external hostname.</p>
+<p>Check upstream resolver reachability over UDP and TCP 53, host firewall rules and recent VPN changes. A container cannot use a host-only loopback resolver as if it were the host. Fix the actual resolver path instead of hard-coding application IP addresses.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q58</span><span>Docker image pull is extremely slow.</span></summary><div class="qa-a">
+<p>Separate registry authentication, DNS, TLS setup, network transfer and layer extraction time. Check image size, architecture, registry throttling, proxy behavior and host disk/CPU pressure.</p>
+<p>Use a nearby registry or approved mirror, reuse shared layers and avoid rebuilding identical dependencies into new blobs. Pin digests and pre-pull critical releases when appropriate. Increasing concurrent downloads can hurt a constrained network or disk, so tune it only after measuring the bottleneck.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q59</span><span>Docker build takes 30 minutes. How do you optimize?</span></summary><div class="qa-a">
+<p>Measure each build step with plain progress output. Reduce the context with .dockerignore; copy dependency manifests before source; reuse package caches with BuildKit cache mounts and export cache to the CI registry.</p>
+<p>Use multi-stage builds, native-architecture runners and appropriately sized CPU/disk resources. Parallelize independent work where possible and avoid repeatedly installing unchanged dependencies. Compare both clean and cached builds and run application tests so a faster build does not silently omit required artifacts.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q60</span><span>Production container CPU spikes randomly.</span></summary><div class="qa-a">
+<p>Correlate spikes with request rate, cron jobs, garbage collection, retries and deployment events. Use docker stats, per-process CPU tools and application profiling to identify the hot function or thread.</p>
+<p>Inspect cgroup throttling: high latency can occur even when host CPU appears free because the container quota is exhausted. Optimize the demonstrated path, cap runaway retries or adjust capacity. A CPU limit contains damage but may increase latency if it is below legitimate demand.</p>
+</div></details>
+</div>
+<div class="qa-topic" id="qa-k8s" style="--topic:var(--violet);--topic-soft:var(--violet-soft)">
+<h3 class="qa-topic-head">Kubernetes <span class="qa-count">100 questions</span></h3>
+<details class="qa"><summary><span class="qnum">Q61</span><span>Explain Kubernetes architecture from memory.</span></summary><div class="qa-a">
+<p>The control plane contains the API server, etcd, scheduler and controller manager; a cloud-controller manager integrates supported cloud services. Workers run kubelet, a CRI-compatible container runtime and networking components.</p>
+<p>Clients submit desired state to the API. Controllers reconcile objects, the scheduler binds unscheduled Pods to nodes, and kubelets run them. CNI provides Pod networking; kube-proxy or a replacement implements Service forwarding. CoreDNS handles cluster DNS, and CSI drivers connect persistent storage.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q62</span><span>What happens when kubectl apply is executed?</span></summary><div class="qa-a">
+<p>kubectl reads the manifest and contacts the API server using configured credentials. Client-side apply calculates a patch; server-side apply delegates field ownership and merge handling to the server.</p>
+<p>The API request passes authentication, authorization, validation and admission before persistence in etcd. Watchers then react: a Deployment creates a ReplicaSet, which creates Pods; the scheduler assigns nodes and kubelets start containers. A successful apply acknowledges API changes, not a healthy application rollout.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q63</span><span>What happens inside API Server?</span></summary><div class="qa-a">
+<p>The API server exposes Kubernetes APIs and handles requests from clients and components. Its processing includes authentication, authorization, object decoding/defaulting, admission and schema validation before an accepted mutation is stored in etcd.</p>
+<p>It also serves reads and watches, performs conversion between API versions and enforces concurrency through resource versions. It does not directly start containers or schedule Pods. Audit events and request metrics help explain rejected requests and slow API operations.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q64</span><span>Why does Kubernetes use etcd?</span></summary><div class="qa-a">
+<p>etcd is a distributed key-value store that provides strongly consistent storage using Raft consensus. Kubernetes needs an authoritative record of objects so controllers can reconcile from the same desired state.</p>
+<p>An etcd cluster requires a majority of voting members to make progress; three members tolerate one member failure. Low disk latency and reliable member connectivity matter. etcd is the control plane&#x27;s database, not the storage destination for application database files.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q65</span><span>What data is stored in etcd?</span></summary><div class="qa-a">
+<p>etcd stores serialized Kubernetes API objects: Deployments, Pods, Services, ConfigMaps, Secrets, RBAC configuration and object status, among others. It also stores metadata such as resource versions.</p>
+<p>It does not normally store container image layers, application logs or PersistentVolume contents. Secrets in etcd require explicit encryption-at-rest configuration for confidentiality beyond storage-level controls. An etcd backup protects cluster API state; application data still needs independent, coordinated backup and recovery.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q66</span><span>How does Scheduler choose a node?</span></summary><div class="qa-a">
+<p>The scheduler observes Pods without a node assignment. Filtering removes nodes that cannot satisfy resources, affinity, taints, storage topology and other constraints. Scoring ranks feasible nodes using configured plugins.</p>
+<p>It then selects a node and records a binding; kubelet performs the actual launch. Resource fit mainly uses requests, not instantaneous CPU usage. A Pod can schedule successfully but still fail later because image pull, storage attachment or application startup fails.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q67</span><span>What happens if etcd becomes unavailable?</span></summary><div class="qa-a">
+<p>If etcd loses quorum, control-plane storage operations cannot reliably progress. The API server may serve some cached reads, but writes and consistent state-dependent operations fail or stall.</p>
+<p>Existing workloads and programmed network paths often keep running, while scheduling and reconciliation degrade. Restore quorum by repairing failed members or performing a documented snapshot recovery when necessary. Starting an independent empty etcd cluster against existing workers is not a safe substitute for restoring authoritative state.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q68</span><span>What happens if API Server goes down?</span></summary><div class="qa-a">
+<p>If every API-server instance is unavailable, kubectl and controllers cannot communicate with the cluster API. New scheduling, configuration changes and normal reconciliation stop. Existing containers and already-programmed Service rules may continue working.</p>
+<p>Kubelets can manage some local container behavior, but cannot publish status normally. Restore API availability by checking load balancers, processes, certificates, admission dependencies and etcd. Multiple API-server replicas reduce single-instance failures but cannot compensate for an unavailable etcd quorum.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q69</span><span>What happens if Scheduler crashes?</span></summary><div class="qa-a">
+<p>Already bound Pods continue running, and kubelets still manage their containers. New Pods requiring scheduling remain unassigned and typically Pending. Controllers may create replacement Pod objects, but they cannot be placed until scheduling resumes.</p>
+<p>In a highly available control plane, another scheduler instance can acquire leadership. Check scheduler logs, leader-election access and API connectivity. Recovery should allow the Pending queue to drain; a scheduler restart does not need to restart healthy workloads.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q70</span><span>What happens if Controller Manager fails?</span></summary><div class="qa-a">
+<p>Controllers stop reconciling their managed resources if no active controller-manager instance is available. Existing workloads may continue, but replica repair, node-related actions and other controller loops become delayed.</p>
+<p>In a highly available setup, a standby should acquire the leader lease. Check the active leader, API connectivity, credentials and component logs. Restoring the process alone is insufficient if it cannot reach the API or obtain leadership; verify reconciliation actually resumes.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q71</span><span>Why did Kubernetes introduce Pods?</span></summary><div class="qa-a">
+<p>A Pod groups tightly coupled containers that must share a network identity, local communication and volumes, and be scheduled together. For example, an application can share a log volume with a helper container.</p>
+<p>The Pod is Kubernetes&#x27; scheduling and lifecycle unit. Most Pods contain one main application container. Containers belong in the same Pod when they need shared fate and close coupling, not merely because they are part of the same larger application.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q72</span><span>Why not manage containers directly?</span></summary><div class="qa-a">
+<p>Managing containers individually would require separate coordination for co-location, shared networking, shared storage and lifecycle. The Pod provides one object describing those guarantees.</p>
+<p>A Pod&#x27;s containers share an IP and port space, so they can communicate through localhost. Individual containers can restart inside the same Pod without replacing the Pod itself. Separate services that need independent scaling or failure isolation usually belong in separate Pods controlled by higher-level workload resources.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q73</span><span>Explain Pod lifecycle.</span></summary><div class="qa-a">
+<p>Pod phases are Pending, Running, Succeeded, Failed and Unknown. After creation, scheduling selects a node; the runtime prepares the sandbox, networking and volumes; init containers run before application containers.</p>
+<p>Conditions such as PodScheduled and Ready provide more detail than phase alone. Running does not imply healthy or ready. On deletion, normal termination sends a graceful-stop signal and eventually forces exit after the grace period. CrashLoopBackOff is a displayed container waiting reason, not a Pod phase.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q74</span><span>What happens when a Pod dies?</span></summary><div class="qa-a">
+<p>If one container exits, kubelet may restart it according to its restart policy. If the Pod is deleted or permanently lost, the same Pod object is not moved to another node.</p>
+<p>A controller such as a Deployment or StatefulSet creates a replacement when required; a bare Pod has no such guarantee. The replacement has a new UID and may have a new IP. Volumes persist or disappear according to their type and lifecycle.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q75</span><span>Why do Pod IPs change?</span></summary><div class="qa-a">
+<p>Pod IPs are allocated by the cluster network plugin to a particular Pod sandbox. When a Pod is replaced, the new sandbox can receive a different address. A normal container restart within an existing sandbox often retains the Pod IP.</p>
+<p>Applications should use Services or appropriate DNS-based discovery instead of storing transient Pod addresses. StatefulSets provide stable identity and DNS names, but that does not guarantee a permanent numeric Pod IP.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q76</span><span>Difference between Pod and Container?</span></summary><div class="qa-a">
+<p>A container is an isolated running process environment created from an image. A Pod is a Kubernetes object containing one or more containers with shared networking, volumes and scheduling placement.</p>
+<p>Each container has its own image, command, resource configuration and filesystem view. Containers in the same Pod share ports, so two processes cannot bind the same address/port combination. Replacing a Pod replaces its lifecycle identity; restarting one container need not replace the Pod.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q77</span><span>Explain init containers.</span></summary><div class="qa-a">
+<p>Regular init containers run sequentially before application containers and must complete successfully. They handle prerequisites such as preparing files or checking a dependency. Failed initialization blocks application startup and may be retried according to Pod behavior.</p>
+<p>They have their own images and resource requirements and can exchange data through shared volumes. Initialization should be idempotent because it can run again. Native sidecars are a special restartable init-container form, not ordinary finite initialization tasks.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q78</span><span>Explain sidecar containers.</span></summary><div class="qa-a">
+<p>A sidecar is a supporting container, such as a proxy or log helper, that runs alongside the main application. It shares the Pod&#x27;s network and selected volumes but has its own process and resource usage.</p>
+<p>Native Kubernetes sidecars are declared under initContainers with restartPolicy: Always, giving startup and shutdown ordering semantics. Traditional sidecars under containers lack those same lifecycle guarantees. Sidecar overhead must be included in Pod capacity and security planning.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q79</span><span>Why might a Pod remain Pending?</span></summary><div class="qa-a">
+<p>Pending means a Pod has been accepted but has not completed startup; it is not limited to scheduling failures. An unscheduled Pod may lack CPU/memory capacity, matching nodes, tolerations or usable storage.</p>
+<p>A scheduled Pod can remain Pending while images, volumes or init tasks are unresolved. Use kubectl describe pod POD and inspect events, nodeName and container states. Fix the reported constraint rather than increasing replicas, which may increase the backlog.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q80</span><span>Explain Pod disruption budgets.</span></summary><div class="qa-a">
+<p>A PodDisruptionBudget sets a minimum available or maximum unavailable count for matching Pods during voluntary evictions, such as a node drain using the eviction API. It helps protect application availability during maintenance.</p>
+<p>It cannot prevent hardware failures and does not directly constrain a Deployment&#x27;s rolling-update controller. A PDB that permits zero disruptions may block maintenance. Availability still requires enough healthy replicas, spare capacity and a rollout strategy consistent with the application&#x27;s quorum requirements.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q81</span><span>Difference between Deployment and ReplicaSet?</span></summary><div class="qa-a">
+<p>A ReplicaSet maintains a desired count of matching Pods. A Deployment manages ReplicaSets to implement declarative updates, rollout progress and revision history.</p>
+<p>Changing a Deployment&#x27;s Pod template creates a new ReplicaSet and shifts replicas from the old one to the new one. A ReplicaSet alone does not provide the same automated rollout workflow. Normal stateless applications use a Deployment, while stable identities or persistent per-replica storage often need a StatefulSet.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q82</span><span>What happens during rollout?</span></summary><div class="qa-a">
+<p>A Deployment rollout begins when its Pod template changes. The controller creates or selects the matching ReplicaSet, adds new Pods and reduces old Pods according to maxSurge and maxUnavailable.</p>
+<p>Readiness and minimum-ready timing affect availability decisions. A bad image or probe can stall progress; exceeding the progress deadline reports failure but does not automatically undo the release. Observe with kubectl rollout status deployment/APP and check the affected Pods&#x27; events and logs.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q83</span><span>How does rollout rollback work?</span></summary><div class="qa-a">
+<p>Rollback restores an earlier Deployment Pod template from retained ReplicaSet revision history. Example: kubectl rollout undo deployment/APP. The controller then rolls toward that template using its normal update behavior.</p>
+<p>Rollback depends on available revision history and does not restore external database contents, mutable ConfigMap data or overwritten image tags. Digest-pinned images and versioned configuration make results predictable. Schema changes need backward compatibility or a separately designed data-recovery strategy.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q84</span><span>Explain desired state.</span></summary><div class="qa-a">
+<p>Desired state is the intended configuration declared in API objects, such as three application replicas using a specific image. Controllers compare that intent with observed state and take actions toward convergence.</p>
+<p>The process is asynchronous and continuous, not a one-time script. External constraints can prevent convergence even when the manifest is valid. Status, conditions and events reveal whether desired state has been reached and why progress is blocked.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q85</span><span>What happens if replicas don&#x27;t match?</span></summary><div class="qa-a">
+<p>The responsible controller detects the count difference and creates or deletes Pods to approach the desired replica count. Scheduling and kubelet then determine whether newly created Pods can run successfully.</p>
+<p>A matching object count does not imply matching ready capacity: Pods may be Pending or crashing. Check desired, current, ready and available replicas separately. If autoscaling is enabled, the autoscaler can change the desired count, so manual edits may be overwritten.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q86</span><span>Why use Deployment instead of Pod?</span></summary><div class="qa-a">
+<p>A bare Pod does not automatically replace itself after deletion or node loss. A Deployment adds replica management, rolling updates, revision history and a clear desired-state interface.</p>
+<p>It is therefore suitable for replaceable stateless services. Persistent identity, ordered changes or a per-replica volume may call for a StatefulSet; finite work uses a Job. The workload controller should match application behavior rather than treating every application as a manually created Pod.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q87</span><span>How do updates happen internally?</span></summary><div class="qa-a">
+<p>An API update persists a changed Pod template. The Deployment controller observes it, computes the new template identity, creates a ReplicaSet and scales old/new ReplicaSets within rollout limits.</p>
+<p>ReplicaSet controllers create/delete Pods; the scheduler binds new Pods, kubelets start them and readiness controls normal Service endpoints. Old Pods terminate gracefully. Changes only to a referenced ConfigMap do not inherently change the template or trigger this sequence unless another mechanism causes a rollout.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q88</span><span>Explain maxUnavailable.</span></summary><div class="qa-a">
+<p>maxUnavailable limits how many desired replicas may be unavailable during a rolling update. It can be an integer or percentage; a percentage is rounded down for a Deployment.</p>
+<p>For four desired replicas and maxUnavailable: 25%, up to one may be unavailable. Setting it to zero protects ready capacity during updates, but requires surge capacity and working readiness checks. It is a rollout setting, not a guarantee against simultaneous node failure.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q89</span><span>Explain maxSurge.</span></summary><div class="qa-a">
+<p>maxSurge permits extra Pods above the desired replica count during a Deployment rolling update. A percentage is rounded up. For three replicas and maxSurge: 25%, one extra Pod may be created.</p>
+<p>The cluster needs resources for that temporary capacity. Terminating Pods can also keep consuming resources, so observed resource usage may exceed a simple replicas-plus-surge estimate. maxSurge and maxUnavailable cannot both be zero for a rolling update.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q90</span><span>How would you perform zero downtime deployment?</span></summary><div class="qa-a">
+<p>Use multiple replicas across failure domains, meaningful readiness/startup probes, maxUnavailable: 0 and sufficient surge capacity. The application must handle graceful termination, stop accepting new work appropriately and finish in-flight requests within its grace period.</p>
+<p>Use backward-compatible schema/API changes and immutable release artifacts. Roll out gradually while checking latency and error rates. These measures aim for uninterrupted service; they cannot promise literal zero downtime under every dependency failure or long-lived connection pattern.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q91</span><span>Why are Services required?</span></summary><div class="qa-a">
+<p>Pods are replaceable and their addresses change. A Service supplies a stable virtual endpoint and DNS name that targets a changing backend set, usually selected by labels.</p>
+<p>EndpointSlice objects describe backend addresses and readiness. Network components implement forwarding to eligible endpoints. A Service does not create Pods and does not itself make an unhealthy application available. Selectorless and headless Services support specialized discovery patterns rather than the standard virtual-IP behavior.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q92</span><span>Difference between Service and Ingress?</span></summary><div class="qa-a">
+<p>A Service exposes a backend set at the transport layer, typically TCP or UDP, with stable discovery. Ingress describes HTTP/HTTPS host and path routing to Services and commonly integrates TLS termination.</p>
+<p>Ingress needs an installed controller; creating the object alone does not provide a proxy. An external request may pass through a load balancer, an Ingress controller, a Service and then a Pod. Gateway API is another routing API where supported.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q93</span><span>Difference between ClusterIP, NodePort and LoadBalancer?</span></summary><div class="qa-a">
+<p>ClusterIP exposes a Service on an internal virtual IP. NodePort also assigns a port on eligible node addresses, with actual reachability controlled by network configuration and firewalls.</p>
+<p>LoadBalancer asks an integration/controller to provision an external or internal load balancer. It often builds on NodePort, but some implementations route directly to Pods and can omit node ports. These types describe exposure, not application authentication or TLS policy.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q94</span><span>How does kube-proxy work?</span></summary><div class="qa-a">
+<p>kube-proxy watches Services and EndpointSlices and programs node networking state so traffic to Service addresses reaches backends. Linux modes include iptables and nftables, with availability and recommendations depending on Kubernetes version.</p>
+<p>It generally programs kernel forwarding rather than proxying every packet through a user-space process. An eBPF networking implementation may replace it. When debugging, first identify the actual Service dataplane rather than assuming every cluster uses iptables.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q95</span><span>How are iptables used?</span></summary><div class="qa-a">
+<p>In iptables mode, kube-proxy creates rules and chains that match Service IPs/ports, select backends and perform destination NAT. Connection tracking preserves mappings for established flows; some paths also require source NAT.</p>
+<p>iptables is one implementation, not a universal Kubernetes requirement. nftables or eBPF can provide alternative dataplanes. Avoid manually changing generated chains because reconciliation can overwrite edits and inconsistent rules can interrupt cluster-wide connectivity.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q96</span><span>How does service discovery work?</span></summary><div class="qa-a">
+<p>Applications usually resolve a Service name through cluster DNS. Within a namespace, a short name such as database works; across namespaces, database.payments identifies the namespace explicitly.</p>
+<p>A normal Service resolves to its ClusterIP; a headless Service typically exposes endpoint addresses. Service environment variables are another mechanism but are set when the Pod starts and are less flexible. DNS discovery only provides addressing; the application still needs reachable, healthy backends.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q97</span><span>Explain CoreDNS.</span></summary><div class="qa-a">
+<p>CoreDNS commonly provides Kubernetes cluster DNS. Its Kubernetes plugin watches Service and endpoint information to answer cluster-local queries, while forwarding plugins resolve external names through upstream DNS.</p>
+<p>It runs as replicated Pods behind a DNS Service, although NodeLocal DNSCache may sit in front. Failures can result from overloaded replicas, bad Corefile configuration, API-watch issues, loops, missing upstream reachability or blocked UDP/TCP 53. DNS metrics and logs help distinguish those causes.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q98</span><span>What happens if DNS fails?</span></summary><div class="qa-a">
+<p>New connections relying on name resolution can fail or become slow. Existing established connections may continue; cached answers or direct IP connections can also work temporarily.</p>
+<p>Test the configured resolver, an internal Service name and an external name separately. Check CoreDNS, its Service/endpoints, NetworkPolicies, upstream DNS and node-local caches. Hard-coded Pod IPs are brittle mitigation because addresses change and bypass intended discovery behavior.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q99</span><span>Why can Service exist without endpoints?</span></summary><div class="qa-a">
+<p>A Service can be created before any matching Pods exist. Empty EndpointSlices can result from selector/label mismatch, Pods that are not ready or an intentionally selectorless Service with no manually managed endpoints.</p>
+<p>Check kubectl get pods --show-labels, the Service selector and kubectl get endpointslices. Confirm namespace and readiness. A valid Service object and DNS record do not mean any process is available to receive the forwarded traffic.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q100</span><span>How does traffic reach a Pod?</span></summary><div class="qa-a">
+<p>For an external HTTP request, a common path is DNS to load balancer, then Ingress/Gateway controller, Service forwarding and a ready Pod endpoint. Internal clients commonly go directly through Service DNS and the cluster dataplane.</p>
+<p>Each hop must agree on address, protocol and port; Service targetPort must match the listening application. Exact routing varies with cloud integration and CNI. A Service is a logical forwarding abstraction, not necessarily a separate physical network hop.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q101</span><span>Explain nodeSelector.</span></summary><div class="qa-a">
+<p>nodeSelector is a simple map of required node labels. A Pod is eligible only for nodes matching every listed key/value, in addition to its other scheduling constraints.</p>
+<p>For example, kubernetes.io/os: linux restricts placement to Linux nodes. It provides exact matching rather than preferences or rich expressions. Labels used as security boundaries must be controlled by trusted administrators so an untrusted node cannot simply label itself as an approved destination.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q102</span><span>Explain nodeAffinity.</span></summary><div class="qa-a">
+<p>Node affinity expresses node-label rules with richer operators than nodeSelector. requiredDuringSchedulingIgnoredDuringExecution is a hard placement rule; preferredDuringSchedulingIgnoredDuringExecution adds a weighted preference.</p>
+<p>IgnoredDuringExecution means a later label change does not automatically evict an already-running Pod. Common uses include hardware selection or preference for particular zones. Hard rules can make Pods unschedulable, so capacity planning must match every permitted label combination.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q103</span><span>Explain podAffinity.</span></summary><div class="qa-a">
+<p>Pod affinity places a Pod near other Pods selected by labels, using a topology key such as node or zone. It can be required or preferred and can consider specified namespaces.</p>
+<p>For example, an application may prefer the same zone as a frequently accessed service to reduce latency. Co-location can also increase correlated failure risk. Large or complex affinity rules add scheduling cost, so use them for measured application needs rather than arbitrary grouping.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q104</span><span>Explain podAntiAffinity.</span></summary><div class="qa-a">
+<p>Pod anti-affinity discourages or forbids placement near matching Pods within a topology domain. It can spread application replicas across nodes or zones to reduce a shared failure impact.</p>
+<p>Required anti-affinity may block additional replicas if there are too few eligible domains. Preferred rules are more flexible but cannot guarantee separation. Topology spread constraints often express balanced placement more directly when the goal is an even count rather than strict avoidance.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q105</span><span>Explain taints.</span></summary><div class="qa-a">
+<p>A taint marks a node to repel Pods that do not tolerate it. NoSchedule blocks new placement, PreferNoSchedule is a soft avoidance rule and NoExecute can also evict existing non-tolerating Pods.</p>
+<p>Taints express node-side restrictions, such as dedicated GPU capacity or an unhealthy condition. They do not attract workloads to that node. Dedicated placement normally combines a taint/toleration with a positive node label and required affinity.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q106</span><span>Explain tolerations.</span></summary><div class="qa-a">
+<p>A toleration allows a Pod to pass a matching taint restriction; it does not force scheduling onto the tainted node. Other filters, capacity and scoring still apply.</p>
+<p>A NoExecute toleration can include tolerationSeconds to allow temporary residence during a node problem. Broad Exists tolerations may admit workloads onto unintended nodes. Keep tolerations specific to the application&#x27;s needs and combine them with affinity when dedicated placement is required.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q107</span><span>How would you isolate workloads?</span></summary><div class="qa-a">
+<p>Use namespaces, RBAC, ResourceQuota and LimitRange for administrative and resource boundaries. Enforce ingress/egress NetworkPolicies and restricted Pod security settings; use distinct service identities and controlled secrets.</p>
+<p>Dedicated nodes require both taints/tolerations and trusted node affinity. For mutually untrusted tenants, separate clusters or sandboxed runtimes may be necessary because ordinary Pods share a kernel. Namespace separation alone is not a strong security boundary.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q108</span><span>Why are some Pods not scheduled?</span></summary><div class="qa-a">
+<p>The scheduler may find no node satisfying requests, taints, affinity, topology spread, volume constraints or available Pod/IP capacity. Quotas can also block Pod creation earlier, which appears in controller events rather than scheduling events.</p>
+<p>Inspect kubectl describe pod POD for FailedScheduling and compare node allocatable resources with requests. Fix the specific unsatisfied condition or add matching capacity. Reducing requests without measurement can move the failure from scheduling into runtime overload.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q109</span><span>Explain topology spread constraints.</span></summary><div class="qa-a">
+<p>Topology spread constraints limit uneven Pod counts across domains such as zones or nodes. maxSkew sets allowed imbalance; topologyKey identifies the domain label; labelSelector identifies the Pods being counted.</p>
+<p>whenUnsatisfiable can enforce DoNotSchedule or prefer ScheduleAnyway behavior. minDomains and eligible-domain rules affect the calculation where used. These constraints improve distribution but need enough healthy capacity in the intended failure domains to avoid a growing Pending queue.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q110</span><span>Explain scheduler priorities.</span></summary><div class="qa-a">
+<p>The scheduler scores feasible nodes using plugins for factors such as resource placement, affinity and topology. Separately, Pod PriorityClass determines scheduling importance and influences preemption.</p>
+<p>A high-priority Pod may evict lower-priority Pods if that makes placement feasible, but priority cannot satisfy impossible hard constraints. Preemption is not instantaneous and does not guarantee PDB protection. Use priority sparingly for critical infrastructure so normal workloads are not unnecessarily starved.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q111</span><span>Difference between PV and PVC?</span></summary><div class="qa-a">
+<p>A PersistentVolume is a cluster-scoped storage resource describing available storage and its properties. A PersistentVolumeClaim is a namespaced request for storage capacity, access mode and optionally a StorageClass.</p>
+<p>A Pod references the PVC; Kubernetes binds it to a suitable PV or provisions one dynamically. PVC deletion behavior depends on the bound PV&#x27;s reclaim policy and driver. Neither the PV nor the PVC object itself is the application data.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q112</span><span>Explain StorageClass.</span></summary><div class="qa-a">
+<p>A StorageClass defines how storage should be provisioned: its provisioner, backend parameters, reclaim policy, binding mode and optional expansion capability. PVCs select a class explicitly or use a configured default.</p>
+<p>WaitForFirstConsumer can delay provisioning until Pod placement is known, avoiding incompatible zone selection. A class describes a policy, not unlimited physical capacity. Encryption, performance and snapshot behavior depend on the storage backend and CSI driver.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q113</span><span>What happens when PVC is created?</span></summary><div class="qa-a">
+<p>The control plane checks whether an available PV matches the claim&#x27;s size, access modes, class and binding rules. If not, a dynamic provisioner may create storage and a PV for the claim.</p>
+<p>With delayed binding, selection/provisioning waits for consumer scheduling. After binding, attachment and mount operations prepare storage for the Pod. A Pending PVC can mean missing class, unavailable capacity, permissions failure or topology constraints; its events usually identify the blocked stage.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q114</span><span>Explain dynamic provisioning.</span></summary><div class="qa-a">
+<p>Dynamic provisioning creates backing storage automatically when a PVC needs it, using a StorageClass and provisioner, usually through CSI. The provisioner requests the storage asset, creates the PV representation and binds it to the claim.</p>
+<p>This replaces manual disk/PV creation but still requires backend capacity and cloud permissions. Reclaim policy determines later cleanup. It does not automatically provide backups or guarantee that newly provisioned storage can be mounted in every zone.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q115</span><span>How does CSI work?</span></summary><div class="qa-a">
+<p>CSI standardizes communication between orchestration systems and storage drivers. Controller-side components handle operations such as provisioning and, where supported, attachment; node-side plugins stage and publish/mount volumes for Pods.</p>
+<p>Kubernetes CSI sidecars translate API events into driver calls. Capabilities such as snapshots, expansion and multi-node access are driver-dependent. Troubleshooting separates provisioning, attachment and mount failures because each stage has different logs, permissions and infrastructure dependencies.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q116</span><span>What happens if storage backend fails?</span></summary><div class="qa-a">
+<p>Applications may see timeouts, I/O errors, read-only mounts or hanging operations. Pods can remain Running even while storage is unusable; new Pods may fail attachment or mount.</p>
+<p>Check backend health, CSI events and application consistency before restarting workloads. Protect against duplicate writers during failover and use the storage system&#x27;s supported recovery process. Recovery might require backend repair, replica promotion or backup restore; Kubernetes cannot reconstruct lost database contents from a PVC object.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q117</span><span>How would you migrate persistent data?</span></summary><div class="qa-a">
+<p>Define acceptable downtime and data loss, inventory PVCs and confirm source/destination driver and format compatibility. Use database-native replication/backups or application-consistent snapshots rather than relying on raw copying of active files.</p>
+<p>Restore into destination storage, preserve permissions and validate integrity with application-level checks. Freeze or fence old writers before final synchronization and traffic cutover. Keep a tested rollback path, noting that writes made after cutover complicate reverting to the old copy.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q118</span><span>Explain ReadWriteOnce vs ReadWriteMany.</span></summary><div class="qa-a">
+<p>ReadWriteOnce allows read-write mounting by a single node; multiple Pods on that node may still use it. ReadWriteMany supports read-write access from multiple nodes when the storage driver supports it.</p>
+<p>ReadWriteOncePod restricts access to one Pod for supported CSI storage. Access modes describe mounting semantics, not database-level concurrency control. An RWX filesystem does not automatically make an application safe for simultaneous independent writers.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q119</span><span>Explain StatefulSets.</span></summary><div class="qa-a">
+<p>A StatefulSet manages Pods with stable ordinal names, stable identity and persistent per-replica claims when volumeClaimTemplates are used. It commonly uses a headless Service for discovery and ordered deployment/update behavior by default.</p>
+<p>Replacement Pods can reconnect to their corresponding storage. Scaling and deletion retention behavior depend on the configured PVC policies. A StatefulSet provides orchestration identity; replication, leader election, backups and data consistency remain application responsibilities.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q120</span><span>Why are StatefulSets needed?</span></summary><div class="qa-a">
+<p>Stateful applications may require a predictable identity, a specific disk per replica and controlled startup or update ordering. A Deployment treats replicas as interchangeable, which does not model all of these requirements.</p>
+<p>A StatefulSet supplies those primitives for systems such as database members. It does not make a single database highly available or establish quorum automatically. An application operator may add the database-specific failover, upgrades and backup logic beyond what StatefulSet provides.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q121</span><span>Explain Kubernetes networking model.</span></summary><div class="qa-a">
+<p>Each Pod normally receives a cluster-wide address, and containers inside a Pod share its network namespace. The model expects direct Pod-to-Pod communication without address translation between Pods, while policy can restrict allowed traffic.</p>
+<p>A CNI implementation supplies the actual routes or tunnels. Services add stable discovery and forwarding above Pod addresses. External ingress/egress can still involve NAT, load balancers and gateways; &quot;no NAT between Pods&quot; does not mean no NAT anywhere in the cluster.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q122</span><span>How do Pods communicate across nodes?</span></summary><div class="qa-a">
+<p>The source Pod sends a packet through its virtual interface to the node dataplane. The CNI then forwards it using native routes or encapsulates it across an overlay to the destination node, where it reaches the target Pod.</p>
+<p>Underlay firewalls, routes and MTU must support the selected mode. Same-node success with cross-node failure points toward those paths, but NetworkPolicy or asymmetric routing can also explain the difference.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q123</span><span>What is CNI?</span></summary><div class="qa-a">
+<p>Container Network Interface is a specification and plugin ecosystem for configuring container network interfaces. During sandbox setup, the runtime invokes configured plugins to allocate addresses and connect networking; cleanup removes that allocation.</p>
+<p>Kubernetes relies on a compatible networking implementation to realize Pod connectivity. Some implementations also enforce policy or replace Service forwarding, but those features are not guaranteed merely by implementing CNI. IP allocation and plugin logs are key evidence for sandbox networking failures.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q124</span><span>Explain Calico.</span></summary><div class="qa-a">
+<p>Calico provides Kubernetes networking and network-policy enforcement. Depending on configuration, it uses routed networking, encapsulation such as VXLAN/IP-in-IP, and Linux or eBPF dataplanes.</p>
+<p>It can advertise routes using BGP, but BGP is not mandatory in every deployment. Its policies can enforce workload boundaries beyond basic reachability. Troubleshooting depends on the actual mode: inspect agent health, routes/tunnels, address pools and policy decisions rather than assuming a single Calico architecture.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q125</span><span>Explain Cilium.</span></summary><div class="qa-a">
+<p>Cilium uses eBPF in the Linux kernel for networking, policy and observability. In configured deployments it can replace kube-proxy&#x27;s Service forwarding and provide identity-aware policy.</p>
+<p>Hubble adds visibility into flows and policy verdicts. The exact feature set depends on kernel support and Cilium configuration. Troubleshooting includes agent/operator health, endpoint state, BPF maps, IP allocation and flow drops; eBPF does not remove the need for correct underlay routing and capacity.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q126</span><span>Explain Flannel.</span></summary><div class="qa-a">
+<p>Flannel primarily provides a simple Pod network across nodes, often using VXLAN encapsulation. It assigns subnet ranges and configures forwarding so Pods on different nodes can communicate.</p>
+<p>Flannel alone generally does not enforce Kubernetes NetworkPolicy; another component is needed for that capability. Check its daemon, subnet allocation, tunnel interfaces, firewall rules and MTU for cross-node problems. Simplicity can be attractive, but security requirements must be covered explicitly.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q127</span><span>How does kube-proxy route traffic?</span></summary><div class="qa-a">
+<p>kube-proxy turns Service and EndpointSlice state into node forwarding rules. A packet sent to a ClusterIP and port is matched and translated toward a suitable backend endpoint; conntrack generally keeps a connection on its selected backend.</p>
+<p>Selection is not necessarily round-robin per HTTP request. Session affinity, topology and traffic policies can affect it. If an eBPF replacement is installed, inspect that implementation instead of looking for kube-proxy rules that may not exist.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q128</span><span>What happens if CNI fails?</span></summary><div class="qa-a">
+<p>New Pods may fail to create their network sandbox or obtain an IP, leaving them in Pending/ContainerCreating. Existing Pods may continue if programmed routes or BPF state remain, or lose connectivity if the active dataplane is affected.</p>
+<p>Look for FailedCreatePodSandBox events, CNI daemon failures, exhausted address pools and runtime plugin errors. Repair configuration or capacity at the failing stage. Deleting all Pods usually increases impact because their replacements need the same broken setup path.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q129</span><span>Explain Network Policies.</span></summary><div class="qa-a">
+<p>NetworkPolicy declares allowed Pod traffic by selectors, namespaces, IP ranges and ports. Policies require a supporting network implementation; creating a policy on an unenforcing plugin changes nothing.</p>
+<p>A selected Pod becomes isolated for the policy&#x27;s specified direction, and allowed traffic is the union of applicable policies. If both source egress and destination ingress are isolated, both must allow the flow. Standard policies mainly address L3/L4; DNS must be allowed when introducing default-deny egress.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q130</span><span>Why can Pods communicate when Services fail?</span></summary><div class="qa-a">
+<p>Direct Pod-IP communication uses the Pod network. A Service additionally depends on correct selectors, ready EndpointSlices, ports and Service forwarding rules. Any of those can fail while the underlying Pod route still works.</p>
+<p>Test destination Pod IP/port, ClusterIP/port and Service DNS separately. This separates application/CNI failure from Service-dataplane failure and DNS failure. Also check traffic policies that intentionally restrict usable endpoints to a node or topology domain.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q131</span><span>Explain RBAC.</span></summary><div class="qa-a">
+<p>Role-Based Access Control authorizes API actions through rules matching verbs, resources and scope. Roles or ClusterRoles define permissions; RoleBindings or ClusterRoleBindings grant them to users, groups or service accounts.</p>
+<p>Use least privilege and test a specific permission with kubectl auth can-i get pods -n TEAM. RBAC does not control network packets or encrypt data. Avoid wildcard grants and routine cluster-admin use, and audit privilege-escalation paths such as impersonation or sensitive workload creation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q132</span><span>Difference between Role and ClusterRole?</span></summary><div class="qa-a">
+<p>A Role defines permissions within one namespace. A ClusterRole can define cluster-scoped permissions or reusable namespaced permissions. The binding determines how those permissions are granted.</p>
+<p>A RoleBinding can reference a ClusterRole while limiting its namespaced grants to the binding&#x27;s namespace. A ClusterRoleBinding grants across the cluster. A RoleBinding cannot make a namespaced permission grant authorize cluster-scoped objects such as nodes merely because its referenced ClusterRole includes them.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q133</span><span>Explain Service Accounts.</span></summary><div class="qa-a">
+<p>A ServiceAccount represents a workload identity within a namespace. Pods can use its projected token to authenticate to the Kubernetes API, and RBAC controls what that identity may do.</p>
+<p>Modern projected tokens can be time-limited and audience-bound. Disable automatic token mounting for applications that do not need it. Cloud workload-identity integrations can exchange the workload identity for scoped cloud access, avoiding static access keys embedded in images or manifests.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q134</span><span>Explain Secrets.</span></summary><div class="qa-a">
+<p>A Secret stores a small amount of sensitive configuration, such as a password, token or certificate. Pods can consume it through mounted files or environment variables, subject to API authorization and workload configuration.</p>
+<p>Base64-encoded Secret data is not encryption. Secret files may update eventually, while environment variables do not automatically refresh in a running process; subPath mounts also have update limitations. Applications need an explicit reload/rotation design rather than assuming every Secret edit takes effect immediately.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q135</span><span>Why are Kubernetes Secrets not truly encrypted?</span></summary><div class="qa-a">
+<p>The premise needs qualification: Kubernetes Secrets can be encrypted at rest, but base64 encoding in manifests provides no confidentiality. Without configured API-server encryption, stored Secret contents are not protected by Kubernetes application-level encryption.</p>
+<p>Even with encryption at rest, an authorized API reader receives plaintext, and a permitted Pod may access its mounted secret. Confidentiality therefore depends on RBAC, node security, encryption configuration and careful application handling, not on the object being named Secret.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q136</span><span>How do you secure Secrets?</span></summary><div class="qa-a">
+<p>Enable encryption at rest, preferably backed by a managed KMS where supported, and tightly restrict Secret read/list/watch privileges. Use workload identity and an external secret manager for controlled delivery and rotation.</p>
+<p>Avoid printing secrets in logs, placing them in Git or giving broad Pod-creation access that bypasses intended restrictions. Secure backups and node access. Verify rotation end to end: changing the manager&#x27;s value is insufficient if the application keeps an old environment variable indefinitely.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q137</span><span>Explain Pod Security Standards.</span></summary><div class="qa-a">
+<p>Pod Security Standards define Privileged, Baseline and Restricted security profiles. Restricted aims for tighter controls such as non-root execution, constrained capabilities, appropriate seccomp and restrictions on host access.</p>
+<p>Pod Security Admission can enforce, audit or warn against selected standards for namespaces. It validates workload security settings; it does not configure network isolation or RBAC. Version-pinning the policy behavior can make upgrades predictable, with explicit treatment for system components that require exceptions.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q138</span><span>Explain Admission Controllers.</span></summary><div class="qa-a">
+<p>Admission controllers evaluate API requests after authentication and authorization and before accepted objects are persisted. Mutating admission can add or change fields; validating admission can reject requests that violate policy.</p>
+<p>Built-in plugins, webhooks and admission policies implement different controls. A failing or slow webhook can block cluster operations depending on failure policy and timeout. Keep admission dependencies highly available and avoid circular dependencies where recovery resources require the failed webhook to start.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q139</span><span>Explain OPA Gatekeeper.</span></summary><div class="qa-a">
+<p>OPA Gatekeeper is a policy controller that uses constraint templates and constraints to evaluate Kubernetes resources, commonly through admission and audit. Policies can require labels, approved registries or safer workload settings.</p>
+<p>Audit detects violations already present; admission controls new requests. Policies must account for exceptions, performance and webhook availability. Gatekeeper enforces the rules actually configured, so installation alone does not make a cluster compliant or secure.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q140</span><span>How would you harden a cluster?</span></summary><div class="qa-a">
+<p>Restrict control-plane exposure, use strong identity and least-privilege RBAC, protect etcd and encrypt Secrets. Apply restricted Pod policies, default-deny network boundaries, minimal workload identities and image verification/scanning.</p>
+<p>Patch nodes and components, limit privileged agents, isolate trust domains and set resource quotas. Centralize audit and runtime telemetry, back up cluster state and application data, and test restoration. Admission safeguards and break-glass access need deliberate design so security controls do not make incident recovery impossible.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q141</span><span>Pod stuck in Pending.</span></summary><div class="qa-a">
+<p>Run kubectl describe pod POD and inspect Events, nodeName and conditions. If nodeName is empty, investigate FailedScheduling: insufficient requests capacity, taints, affinity, topology, volume binding or maximum Pod count.</p>
+<p>If already assigned, inspect image pulls, mounts and init-container status. Check PVC events and node readiness where relevant. Fix the named blocker and confirm the Pod becomes Ready; creating more replicas does not solve an unsatisfied scheduling constraint.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q142</span><span>CrashLoopBackOff.</span></summary><div class="qa-a">
+<p>CrashLoopBackOff means a container repeatedly exits and Kubernetes delays subsequent restart attempts. Use kubectl logs POD -c CONTAINER --previous and kubectl describe pod POD to inspect the previous exit reason, code and probe events.</p>
+<p>Typical causes include invalid configuration, missing dependencies, OOM kills, failing liveness probes and an entrypoint that exits normally. Fix the cause and observe restart count plus application health. Deleting the Pod only resets the symptom unless the replacement conditions differ.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q143</span><span>ImagePullBackOff.</span></summary><div class="qa-a">
+<p>ImagePullBackOff indicates repeated image retrieval failure with retries backed off. kubectl describe pod POD usually shows whether the cause is a missing tag, denied authentication, rate limit, DNS/TLS issue or incompatible architecture.</p>
+<p>Verify the image reference, registry reachability and imagePullSecrets in the Pod&#x27;s namespace. Check node disk pressure and credentials expiry. Restore access or correct the reference, then confirm the exact intended digest runs; changing to an arbitrary public image is not a valid application fix.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q144</span><span>OOMKilled.</span></summary><div class="qa-a">
+<p>OOMKilled indicates a process was killed under memory pressure, often after crossing a container limit. Check container lastState, memory metrics, limit/request settings and node kernel events to distinguish container-level exhaustion from wider host pressure.</p>
+<p>Exit code 137 alone is not proof of OOM because other SIGKILL paths exist. Profile retained heap, native memory and caches. Raise limits only if capacity supports legitimate usage; a leak needs correction, and raising the limit merely delays its next failure.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q145</span><span>ContainerCreating forever.</span></summary><div class="qa-a">
+<p>ContainerCreating is a displayed waiting state during setup. Use kubectl describe pod POD to find FailedMount, FailedAttachVolume, FailedCreatePodSandBox or image/runtime errors.</p>
+<p>Inspect related PVCs, CSI/CNI daemon logs, node disk/inode capacity and kubelet/runtime health. A missing Secret or ConfigMap can also block creation. Resolve the earliest failed prerequisite, then confirm sandbox, mount and container startup complete. Repeated deletion can obscure events without repairing the dependency.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q146</span><span>Service not reachable.</span></summary><div class="qa-a">
+<p>Check kubectl get svc SERVICE -o yaml and kubectl get endpointslices. Verify selectors, ready backends, Service port, targetPort and the application&#x27;s listening address.</p>
+<p>Test Pod IP/port first, then ClusterIP/port, then DNS. If only the Service path fails, inspect kube-proxy or its replacement and traffic policies. If all paths fail, investigate application, CNI and NetworkPolicy. External access additionally depends on load-balancer provisioning, health checks and firewall rules.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q147</span><span>DNS not resolving.</span></summary><div class="qa-a">
+<p>From an affected Pod, inspect /etc/resolv.conf and resolve both a cluster Service name and an external name. Check DNS Service endpoints and kubectl -n kube-system get pods -l k8s-app=kube-dns.</p>
+<p>Inspect CoreDNS logs, configuration, upstream reachability and policy for both UDP/TCP 53. If only one node is affected, check its local DNS cache and dataplane. Compare short names and fully qualified names to detect namespace/search-domain mistakes rather than a true resolver outage.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q148</span><span>Ingress not routing traffic.</span></summary><div class="qa-a">
+<p>Verify an Ingress controller is installed and the object&#x27;s ingressClassName selects it. Inspect kubectl describe ingress NAME, controller logs, host/path rules, TLS Secrets and backend Service ports/endpoints.</p>
+<p>Test the backend directly, then the controller using the intended Host header, then public DNS/load-balancer access. This isolates application, rule and external routing failures. A 404 commonly indicates unmatched routing; a 502/503 often points to backend reachability or readiness, but controller logs must confirm it.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q149</span><span>Node NotReady.</span></summary><div class="qa-a">
+<p>Use kubectl describe node NODE to inspect Ready, pressure conditions and events. Check kubelet/runtime status, API connectivity, node certificates, disk/inodes and the network plugin.</p>
+<p>A control-plane connectivity issue can mark an otherwise running node unhealthy. Cordon the node if needed to prevent new placement, but ensure safe capacity and storage handling before evacuation. Restore the failing component and verify healthy leases, Ready status and workload connectivity before returning it to service.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q150</span><span>High API Server latency.</span></summary><div class="qa-a">
+<p>Break latency down by API verb/resource and by request stage. Check API-server CPU/memory, request concurrency, admission-webhook duration and etcd request, disk and leader metrics.</p>
+<p>High-volume list/watch clients, slow storage, network problems or overloaded webhooks can be the bottleneck. Inspect audit sampling and client behavior without exposing credentials. Reduce abusive requests or fix the slow dependency first; adding API-server replicas will not cure an etcd disk bottleneck or blocking admission service.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q151</span><span>One node suddenly fails. What happens?</span></summary><div class="qa-a">
+<p>After missed node heartbeats/leases, the control plane marks the node unhealthy and applies relevant taints. Replacement and eviction timing depend on controllers, tolerations and configuration; it is not instantaneous.</p>
+<p>Deployment-managed workloads can receive replacements on healthy nodes if capacity exists. Volume detachment/reattachment and fencing may delay stateful recovery. Work may continue on an isolated node, so prevent duplicate writers. Validate traffic, data integrity and spare capacity rather than assuming replica count alone proves recovery.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q152</span><span>Entire Availability Zone fails.</span></summary><div class="qa-a">
+<p>Replicas and storage tied to the failed zone become unavailable. Surviving zones must have enough capacity, suitable storage and working control-plane quorum. Topology spreading reduces concentration before the incident.</p>
+<p>Shift traffic to healthy instances and scale in surviving zones, accounting for quotas and zonal volume limitations. Database failover must preserve the chosen consistency and data-loss objectives. A multi-zone cluster is not resilient if all state, NAT egress or critical dependencies remain in one zone.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q153</span><span>etcd database corruption.</span></summary><div class="qa-a">
+<p>Freeze unnecessary control-plane changes and preserve failed data for diagnosis. Determine whether a single damaged member can be replaced from healthy quorum or whether full disaster recovery from a verified snapshot is required.</p>
+<p>Restore using the supported etcd recovery procedure and matching tooling, rebuilding membership safely; Kubernetes recovery may require revision bump and compaction marking to invalidate stale watches. Validate API objects and controllers afterward. Cluster-state restoration does not restore application data, and an old snapshot loses later configuration changes.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q154</span><span>Cluster upgrade fails halfway.</span></summary><div class="qa-a">
+<p>Stop further upgrades and inventory which components and nodes changed. Compare failures against supported version-skew rules, removed APIs, CNI/CSI compatibility and admission behavior. Preserve logs and backups.</p>
+<p>Repair or complete the smallest supported step, using provider recovery procedures for managed clusters. Arbitrary control-plane downgrades may be unsupported, and old snapshots can lose recent changes. Validate workloads, DNS, storage and controller health before resuming in stages with clear checkpoints.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q155</span><span>Massive traffic spike.</span></summary><div class="qa-a">
+<p>Protect the service with rate limits, bounded queues and load shedding where needed. Scale application replicas using suitable metrics, and verify node autoscaling, quotas, image-pull capacity and Pod IP availability.</p>
+<p>Check databases, caches and external APIs because more Pods can overwhelm a shared dependency. Track latency, errors and saturation during expansion. Pre-warming and load testing reduce autoscaling lag; no autoscaler can instantly create unlimited capacity when traffic exceeds infrastructure or downstream limits.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q156</span><span>Memory leak in production Pods.</span></summary><div class="qa-a">
+<p>Compare memory growth by revision, traffic and Pod age. Collect heap/native-memory evidence before restarting a representative instance. Use kubectl top pods plus historical metrics; point-in-time readings alone cannot establish a leak.</p>
+<p>Mitigate through rollback, controlled restarts or safe scale-out while protecting capacity. Fix unbounded allocations, caches or queues and test under sustained load. Memory limits contain a failure but can cause recurring OOM kills; readiness and gradual replacement protect users during mitigation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q157</span><span>Application latency suddenly doubles.</span></summary><div class="qa-a">
+<p>Use traces and latency histograms to locate whether time increased in ingress, application, database or external calls. Correlate the change with deployments, traffic, GC, CPU throttling and dependency errors.</p>
+<p>Compare healthy and affected nodes/versions; inspect queue depth, connection pools, storage latency and network retransmissions. Roll back a clearly correlated bad release or reduce overload while investigating. Doubling average latency can hide a much worse tail, so evaluate p95/p99 and user-facing errors too.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q158</span><span>DNS outages across cluster.</span></summary><div class="qa-a">
+<p>Establish whether internal names, external names or both fail and whether every node is affected. Check CoreDNS availability, Service endpoints, its API access, configuration and upstream resolvers; inspect NodeLocal DNSCache where installed.</p>
+<p>Look for recent policy changes, blocked TCP/UDP 53, query floods and memory/CPU exhaustion. Revert a confirmed bad change or scale the constrained resolver path. Verify resolution from multiple namespaces/nodes and watch latency and error metrics before declaring recovery.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q159</span><span>Kubernetes control plane unavailable.</span></summary><div class="qa-a">
+<p>Existing containers may continue running, but API-driven scaling, scheduling and reconciliation are unavailable or degraded. Freeze deployment automation and assess API endpoints, etcd quorum, networking, certificates and admission dependencies.</p>
+<p>For managed services, check provider health and engage the supported recovery path. Avoid uncoordinated node restarts because replacement capacity cannot be assumed while the control plane is down. After restoration, watch for a reconciliation surge and verify service, storage and desired-state consistency.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q160</span><span>1000 Pods start crashing simultaneously.</span></summary><div class="qa-a">
+<p>Treat this as a likely shared failure rather than 1000 unrelated bugs. Correlate the first failures with releases, configuration/secret rotation, certificates, DNS, node images and dependency outages. Group affected Pods by node, namespace, revision and exit reason.</p>
+<p>Freeze rollouts, preserve representative previous logs/events and contain retry storms. Revert the confirmed common cause or restore the dependency, then recover in batches to avoid overload. Verify error rates and data correctness, not just that restart counts stop increasing.</p>
+</div></details>
+</div>
+<div class="qa-topic" id="qa-terraform" style="--topic:var(--amber);--topic-soft:var(--amber-soft)">
+<h3 class="qa-topic-head">Terraform <span class="qa-count">70 questions</span></h3>
+<details class="qa"><summary><span class="qnum">Q161</span><span>Explain Terraform architecture.</span></summary><div class="qa-a">
+<p>Terraform Core loads HCL configuration, evaluates expressions, builds a dependency graph and compares configuration with state and provider-observed objects. Provider plugins translate resource operations into external API calls.</p>
+<p>A backend stores state and may support locking; execution can be local or on a managed runner. init installs configured dependencies, plan calculates proposed changes and apply executes them. Terraform is declarative infrastructure orchestration, not a continuously running reconciler unless automation invokes it repeatedly.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q162</span><span>What is Terraform State?</span></summary><div class="qa-a">
+<p>Terraform state records the mapping between resource addresses in configuration and real infrastructure objects, together with tracked attributes, dependencies and metadata. It is usually serialized as JSON and may contain sensitive values.</p>
+<p>State is not the same as the configuration: configuration expresses intent, while state records Terraform&#x27;s bindings and observations. Remote backends centralize it, but access controls, encryption, versioning and recovery processes are still required.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q163</span><span>Why is state required?</span></summary><div class="qa-a">
+<p>State tells Terraform that a particular resource block manages a specific existing object ID. Without that binding, Terraform cannot reliably know whether an object was created by this configuration or is unrelated infrastructure.</p>
+<p>It also retains attributes and dependency information needed for planning and destruction, including objects removed from configuration. Cloud tags or names are not a substitute for state because they can be ambiguous, mutable or absent.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q164</span><span>What happens if state is deleted?</span></summary><div class="qa-a">
+<p>Deleting state usually leaves real infrastructure running but removes Terraform&#x27;s management bindings. A subsequent plan may propose creating duplicates or fail because names and resources already exist.</p>
+<p>Stop applies and restore the correct backend object version or backup. If no backup exists, reconstruct bindings using inventory and supported imports, then review the plan until it matches intent. Recreating an empty state and applying immediately can cause outages or unmanaged duplication.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q165</span><span>Explain providers.</span></summary><div class="qa-a">
+<p>Providers are plugins implementing resource and data-source types for platforms such as AWS, Azure, Kubernetes or GitHub. They define schemas, authenticate to APIs, read existing objects and perform planned changes.</p>
+<p>required_providers declares source and version constraints; provider blocks configure instances, and aliases support multiple accounts or regions. Pin compatible versions and commit the dependency lock file. Provider permissions should be scoped to the stack rather than granting permanent administrative access.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q166</span><span>Explain resources.</span></summary><div class="qa-a">
+<p>A resource block declares an infrastructure object Terraform should manage through a provider. Its type selects the provider capability, and its local name forms part of its Terraform address.</p>
+<p>For example, aws_s3_bucket.logs represents one managed bucket instance unless count or for_each creates several. Arguments describe intended configuration; computed attributes come from the provider. The resource address is Terraform identity and is distinct from the cloud object&#x27;s human-readable name or ID.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q167</span><span>Explain data sources.</span></summary><div class="qa-a">
+<p>A data source reads existing information without declaring Terraform ownership of that object&#x27;s lifecycle. Examples include selecting a machine image or looking up an existing subnet.</p>
+<p>Reads normally happen during planning when inputs are known, but may be deferred until apply if dependencies are unknown. A changing lookup can alter a future plan, so use stable filters where reproducibility matters. Data sources cannot replace imports when Terraform is supposed to manage an existing resource.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q168</span><span>Explain modules.</span></summary><div class="qa-a">
+<p>A module is a directory of Terraform configuration with inputs, resources and outputs. The working directory is the root module; module blocks call child modules to reuse a coherent infrastructure pattern.</p>
+<p>A useful module exposes clear inputs and hides repetitive implementation while keeping important trade-offs configurable. Module outputs connect dependencies to callers. Modules are abstractions, not automatic state boundaries: child modules normally share the root module&#x27;s state.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q169</span><span>Explain outputs.</span></summary><div class="qa-a">
+<p>Outputs expose selected values from a module, such as a load-balancer hostname or subnet IDs. A parent module references child outputs through module.NAME.OUTPUT, and root outputs are available through terraform output.</p>
+<p>Marking an output sensitive suppresses ordinary display but does not encrypt it or remove it from state. Treat outputs as a stable interface and avoid unnecessarily exposing credentials or granting consumers broad state access merely to retrieve a simple non-secret value.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q170</span><span>Explain variables.</span></summary><div class="qa-a">
+<p>Input variables parameterize configuration so the same module can serve different environments. They support types, defaults, descriptions, validation and sensitivity marking.</p>
+<p>Values can come from variable files, environment variables such as TF_VAR_region, command-line options or a managed execution system, with defined precedence. Validation catches invalid inputs early. A sensitive variable can still enter plan/state; sensitivity primarily controls display unless supported ephemeral mechanisms are deliberately used.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q171</span><span>Local vs Remote state.</span></summary><div class="qa-a">
+<p>Local state is stored in a file accessible to the local execution environment. It is simple for experiments but difficult to coordinate safely among people or ephemeral CI runners.</p>
+<p>Remote state is stored in a backend such as S3, Azure Blob or HCP Terraform, enabling shared access and backend-specific locking, versioning and controls. Remote does not automatically mean secure: policies, encryption, network access and backup retention must be configured.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q172</span><span>Why use remote state?</span></summary><div class="qa-a">
+<p>Remote state gives all authorized operators a shared source of management bindings and removes dependence on one engineer&#x27;s laptop. With a suitable backend it also supports coordinated locking, auditability and version-based recovery.</p>
+<p>It is especially important for CI because runners are temporary. Separate state by sensible ownership and blast radius; one huge remote state still creates broad permissions and slow, tightly coupled changes. Secure the backend as a sensitive production dependency.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q173</span><span>Explain state locking.</span></summary><div class="qa-a">
+<p>State locking prevents concurrent operations from changing the same state at the same time. A supported backend acquires a lock before relevant operations and releases it afterward.</p>
+<p>It avoids competing writes and inconsistent assumptions between plans and applies. Locking is scoped to a state location, not to every resource in a cloud account. Two different states can still conflict if they both attempt to manage the same external object.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q174</span><span>How does locking work?</span></summary><div class="qa-a">
+<p>The backend implements its lock mechanism, commonly storing lock ownership/operation metadata or holding a lease. Azure Blob uses blob leasing. The S3 backend supports native lockfiles with use_lockfile; older DynamoDB-based locking is deprecated.</p>
+<p>Another operation must wait or fail while the lock exists. Backend access permissions and consistent client configuration are essential. Exact mechanisms vary by backend, so &quot;remote state&quot; alone is not evidence that locking is enabled and working.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q175</span><span>What happens if locking fails?</span></summary><div class="qa-a">
+<p>Terraform normally stops rather than continue unsafely when it cannot acquire a required lock. The cause may be a legitimate active run, stale lock, access denial or backend connectivity failure.</p>
+<p>Identify the lock owner and active CI jobs before retrying. A timeout option can wait for an expected active operation. Force-unlock is appropriate only after proving the owning process is no longer running; bypassing locks can corrupt state coordination or create conflicting changes.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q176</span><span>Explain backend.</span></summary><div class="qa-a">
+<p>A backend defines where Terraform stores state and how it accesses that storage, including backend-specific locking behavior. Examples include local, S3, azurerm and remote execution services.</p>
+<p>Backend configuration is initialized by terraform init and is separate from provider configuration. Changing it may require a controlled state migration. Avoid hard-coded credentials in backend settings because initialization metadata and saved plans can retain them. Backend access is required before normal managed changes can proceed safely.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q177</span><span>Why use Azure Storage/S3?</span></summary><div class="qa-a">
+<p>S3 and Azure Blob provide durable remote object storage with access controls, encryption options, versioning and recovery features. Terraform backends integrate with their locking mechanisms where configured.</p>
+<p>S3 can use native state lockfiles; Azure Blob uses leases. Enable restricted access, recovery retention and audit logging. Durability does not protect against every authorized deletion or wrong overwrite, so versioning, soft-delete/retention where applicable and tested restoration remain important.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q178</span><span>How do you secure state files?</span></summary><div class="qa-a">
+<p>Encrypt storage and transport, use least-privilege identities and restrict access to the specific backend paths. Enable versioning/recovery retention, audit access and separate environments where permissions differ.</p>
+<p>Keep state and saved plans out of source control, public artifacts and chat logs. Use short-lived CI credentials and protect any local copies or crash-recovery files. Sensitive output flags do not encrypt stored data, and access to a state snapshot can reveal secrets beyond the outputs a user intended to consume.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q179</span><span>Why are state files dangerous?</span></summary><div class="qa-a">
+<p>State can contain passwords, tokens, private keys, connection strings and detailed infrastructure topology, including values marked sensitive. Someone with write access can also tamper with Terraform&#x27;s resource bindings and influence future operations.</p>
+<p>Treat state as both confidential data and critical operational metadata. Restrict read and write privileges separately where possible, record access and protect historical versions. Redacting terminal output does not make a copied state file safe to publish.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q180</span><span>How would you recover corrupted state?</span></summary><div class="qa-a">
+<p>Stop all writers and preserve the damaged file plus backend versions. Recover the latest verified consistent snapshot using the backend&#x27;s version history or a supported state-recovery procedure.</p>
+<p>Check lineage, serial and workspace/backend identity before replacing current state. Compare the recovered bindings with actual infrastructure through a reviewed plan and import any legitimate missing objects. Avoid hand-editing JSON unless no supported recovery path exists and the exact format implications are understood.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q181</span><span>How does Terraform determine resource order?</span></summary><div class="qa-a">
+<p>Terraform builds ordering from references and declared dependencies, not from the visual order of blocks in a file. A resource using another resource&#x27;s attribute depends on it and must wait for the necessary value or operation.</p>
+<p>Independent graph nodes can run concurrently. Destroy operations generally respect reverse dependency needs. Unnecessary dependencies reduce parallelism and can defer reads, so configuration should express real relationships rather than forcing every resource into a sequential chain.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q182</span><span>Explain dependency graph.</span></summary><div class="qa-a">
+<p>The dependency graph is a directed graph of resources, provider configurations and operations. An edge means one node depends on another, so Terraform executes ready nodes only after their prerequisites permit progress.</p>
+<p>Cycles are invalid because no valid ordering exists. The graph enables concurrent independent operations and helps determine replacement/destruction ordering. A diagram from terraform graph can aid diagnosis, but the authoritative relationship comes from configuration references and lifecycle behavior.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q183</span><span>Explain implicit dependencies.</span></summary><div class="qa-a">
+<p>An implicit dependency arises when an expression references another managed object&#x27;s value. For example, subnet_id = aws_subnet.app.id makes the consuming resource depend on that subnet.</p>
+<p>Terraform tracks the reference even if the ID is not yet known during planning. Hard-coding the same subnet&#x27;s ID as a string does not express that relationship. Referencing resources and module outputs therefore improves both correctness and change propagation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q184</span><span>Explain explicit dependencies.</span></summary><div class="qa-a">
+<p>An explicit dependency uses depends_on to declare an ordering relationship not evident from value references. For example, an instance workload may require an IAM policy attachment to be completed although it does not consume that attachment&#x27;s attributes.</p>
+<p>This can make planning more conservative and cause values to remain unknown until apply. It orders Terraform operations; it does not guarantee that an external service is immediately ready after its API reports successful creation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q185</span><span>When should depends_on be used?</span></summary><div class="qa-a">
+<p>Use depends_on for a genuine hidden behavioral dependency that Terraform cannot infer from attributes. A resource needing permissions installed by a separate attachment is a typical case.</p>
+<p>Prefer direct attribute references when they already describe the dependency. Avoid whole-module depends_on as a blanket fix because it serializes unrelated work and can cause unnecessary deferred reads or changes. If readiness is the issue, use provider-supported waiting or a proper readiness mechanism rather than assuming ordering proves readiness.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q186</span><span>How does Terraform parallelize?</span></summary><div class="qa-a">
+<p>Terraform walks the dependency graph and runs independent ready operations concurrently, subject to its parallelism limit, provider behavior and API rate limits. The CLI commonly defaults to ten concurrent graph operations.</p>
+<p>The -parallelism option changes that bound, but more concurrency can trigger throttling or overload a backend service. Measure API wait time and dependency bottlenecks first. Dependencies, not file layout, determine whether two resource operations can actually run together.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q187</span><span>What happens during plan?</span></summary><div class="qa-a">
+<p>Plan loads configuration/state, asks providers to refresh managed-object observations by default and calculates changes needed to reach desired state. It reports create, update, replace and destroy actions plus values still unknown.</p>
+<p>terraform plan -out=tfplan saves an executable plan artifact, which can contain sensitive information. Planning does not apply the proposed resource mutations, but providers and data sources make reads and external data programs can have their own behavior. Review replacements and deletions carefully.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q188</span><span>What happens during apply?</span></summary><div class="qa-a">
+<p>Apply obtains the appropriate lock, determines or loads the plan and asks providers to execute graph-ordered operations. Terraform records successful changes in state as execution progresses.</p>
+<p>It is not one atomic transaction: earlier operations may succeed before a later operation fails. A saved plan must still match the current state and execution context. After failure, review the error and re-plan instead of assuming everything rolled back or that replaying an old plan is safe.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q189</span><span>What happens during refresh?</span></summary><div class="qa-a">
+<p>Refresh reads the current attributes of tracked remote objects through providers and updates Terraform&#x27;s observations. It does not intentionally change the remote infrastructure to match configuration.</p>
+<p>Normal planning includes refresh unless disabled. A refresh-only plan/apply can review and record observed drift without normal configuration-driven changes. The older standalone refresh command is less suitable for careful review. Refresh cannot discover every unmanaged object and automatically create the missing resource bindings for it.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q190</span><span>Explain drift.</span></summary><div class="qa-a">
+<p>Drift is a difference between declared/recorded infrastructure expectations and actual remote configuration, often caused by manual changes or another automation system. Provider updates and API defaults can also expose unexpected differences.</p>
+<p>A refreshed plan detects differences for managed attributes, but not every security or operational problem. Decide whether to revert unauthorized drift or adopt an approved change in code. Blindly applying can undo an emergency fix, while blindly accepting drift can normalize an unsafe configuration.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q191</span><span>Explain lifecycle blocks.</span></summary><div class="qa-a">
+<p>A lifecycle block customizes resource change behavior. Common rules include create_before_destroy, prevent_destroy, ignore_changes and replace_triggered_by. Preconditions and postconditions can assert required properties where supported.</p>
+<p>These rules alter planning and ordering, not the cloud provider&#x27;s fundamental capabilities. For example, creating before destroying still requires enough quota and non-conflicting names. Use lifecycle rules for explicit ownership and safety requirements rather than suppressing all differences until a plan looks clean.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q192</span><span>Explain create_before_destroy.</span></summary><div class="qa-a">
+<p>create_before_destroy asks Terraform to create a replacement before deleting the old object, helping preserve availability. Dependencies can also be affected by the required ordering.</p>
+<p>It succeeds only when the platform permits both instances at once: unique names, capacity, addresses and attachment constraints matter. It does not automatically move traffic, migrate a database or wait for application health. Those cutover steps must be modeled or handled by the surrounding deployment design.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q193</span><span>Explain prevent_destroy.</span></summary><div class="qa-a">
+<p>prevent_destroy causes Terraform to reject plans that would destroy or replace the protected resource while the rule remains in configuration. It is useful for critical databases or other costly-to-recover objects.</p>
+<p>It is not a cloud-side deletion lock. Removing the resource block also removes this configuration protection, and out-of-band deletion can still happen. Combine it with provider deletion protection, reviewed plans, restricted credentials and backups rather than treating it as an absolute safeguard.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q194</span><span>Explain ignore_changes.</span></summary><div class="qa-a">
+<p>ignore_changes tells Terraform to ignore selected attribute differences when planning updates after creation. It is useful where another legitimate controller owns an attribute, such as autoscaler-managed desired capacity.</p>
+<p>It does not prevent the value from being set at creation and does not transfer ownership automatically. Broad ignoring can hide real drift, security changes and mistakes. Keep the list narrow and document the operational ownership boundary in the repository.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q195</span><span>Explain taint.</span></summary><div class="qa-a">
+<p>Taint marks an existing resource as needing replacement at the next apply. The terraform taint command is deprecated in favor of an explicit replacement request during planning or apply.</p>
+<p>Example: terraform plan -replace=aws_instance.app -out=tfplan</p>
+<p>This makes replacement visible in the reviewed plan without separately mutating taint state. Replacement can still destroy data or interrupt service, so dependency ordering, backups and application cutover remain relevant.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q196</span><span>Explain import.</span></summary><div class="qa-a">
+<p>Import associates an existing remote object with a Terraform resource address. An import block supports a reviewable configuration-driven workflow; the CLI import command directly establishes the binding.</p>
+<p>Configuration must accurately represent the imported object or the next plan may propose unwanted changes. Some workflows can generate configuration, but generated output still needs review. Never bind the same real object into multiple active states, because both configurations could then attempt conflicting management.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q197</span><span>Explain workspaces.</span></summary><div class="qa-a">
+<p>Terraform CLI workspaces maintain separate state instances for the same configuration/backend. They are useful for similar deployments, and terraform.workspace can expose the selected name.</p>
+<p>They do not inherently provide separate credentials, strong environment isolation or distinct code versions. HCP Terraform workspaces are broader run/state/configuration units and are not identical to CLI workspaces. For production boundaries, separate root configurations, accounts and backend permissions are often clearer than relying only on a workspace name.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q198</span><span>Explain count vs for_each.</span></summary><div class="qa-a">
+<p>count creates instances identified by numeric indexes, such as resource.item[0]. It fits a fixed quantity of similar objects, but removing an early list entry can shift addresses and produce unintended changes.</p>
+<p>for_each creates instances identified by stable map keys or set members, such as resource.item[&quot;api&quot;]. It is usually better for named objects with individual settings. Keys must be known before apply and cannot be sensitive; changing a key changes Terraform identity unless explicitly moved.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q199</span><span>Explain dynamic blocks.</span></summary><div class="qa-a">
+<p>A dynamic block generates repeated nested blocks inside a resource or other supported block from a collection. It is useful for variable numbers of rules or configuration entries with a consistent structure.</p>
+<p>It does not create separate top-level resource instances; count or for_each does that. It cannot generate arbitrary meta-arguments such as lifecycle. Use it when repetition is real, since excessive dynamic expressions can make a module harder to understand and review.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q200</span><span>Explain remote modules.</span></summary><div class="qa-a">
+<p>Remote modules are retrieved from registries, Git repositories or other supported sources during init. Registry modules support version constraints; Git sources should reference an immutable commit or controlled release reference.</p>
+<p>Treat module code as trusted infrastructure logic because it can request powerful changes. Review sources, maintain an upgrade process and avoid floating references in production. The provider dependency lock file does not independently lock all remote module versions, so module source/version pinning remains necessary.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q201</span><span>How do you integrate Terraform with pipelines?</span></summary><div class="qa-a">
+<p>A pipeline checks formatting and validation, runs security/policy checks, initializes the intended backend and generates a saved plan. Reviewers approve that exact plan before a scoped deployment identity applies it.</p>
+<p>Serialize writes per state and use short-lived cloud credentials. Keep plan artifacts confidential and tied to commit, environment and expiration; regenerate stale plans. Finish with outputs and targeted operational checks, because successful infrastructure API calls do not automatically prove the application works.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q202</span><span>How do you secure credentials?</span></summary><div class="qa-a">
+<p>Use CI workload identity/OIDC federation to obtain short-lived cloud credentials rather than storing permanent access keys. Restrict which repository, branch, environment and identity claims may assume each role.</p>
+<p>Separate plan and apply privileges where practical and scope access to the correct account/backend. Mask logs and protect runners from untrusted contributions. Cloud credentials and Terraform state both need protection; removing keys from Git does not secure a pipeline that executes attacker-controlled code with production permissions.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q203</span><span>How do you handle approvals?</span></summary><div class="qa-a">
+<p>Require review of the exact commit and saved plan, with explicit attention to deletes, replacements, IAM and network exposure. Bind approval to the target environment and artifact checksum so a different plan cannot silently be applied.</p>
+<p>Use protected environments or a managed run system, policy gates and separation of duties for high-impact changes. If state or code changes and the plan becomes stale, generate a new plan and obtain the appropriate fresh review.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q204</span><span>How do you manage environments?</span></summary><div class="qa-a">
+<p>Keep reusable child modules separate from environment-specific root configurations. Use distinct state locations, credentials and cloud accounts/subscriptions where production boundaries require them.</p>
+<p>Promote tested module and provider versions from development through staging to production, changing only deliberate environment inputs. Avoid long-lived branches with uncontrolled configuration divergence. CLI workspaces can suit similar temporary environments but should not be mistaken for a complete permission or blast-radius boundary.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q205</span><span>How do you manage secrets?</span></summary><div class="qa-a">
+<p>Store secrets in a controlled secret manager and use workload identity to retrieve them where possible. Avoid putting plaintext in variables committed to Git, saved outputs or broad CI logs.</p>
+<p>Terraform can still store provider-returned secrets in state even when marked sensitive. Prefer supported ephemeral values/write-only arguments where suitable, or arrange runtime secret retrieval outside Terraform. Encrypt and restrict plan/state storage and rotate exposed credentials; sensitivity flags alone are not a secret-management system.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q206</span><span>How do you handle state locking in CI/CD?</span></summary><div class="qa-a">
+<p>Use a locking-capable backend and CI concurrency groups keyed to the exact state/environment. Set a reasonable -lock-timeout so short overlaps wait instead of failing immediately.</p>
+<p>Ensure all writers use the same backend and locking configuration. Investigate stale locks against job history and active processes before force-unlocking. A pipeline timeout can leave cloud operations in progress, so a terminated job is not by itself proof that every provider action has safely completed.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q207</span><span>How do you perform drift detection?</span></summary><div class="qa-a">
+<p>Run scheduled read-oriented plans using controlled credentials and the correct backend/configuration. terraform plan -detailed-exitcode returns 0 for no changes, 2 for changes and 1 for an error.</p>
+<p>Alert owners on meaningful differences and attach a protected plan summary. Distinguish failed reads or provider-version noise from actual drift. Reconcile through reviewed code or an approved apply; automatic remediation of every difference can undo legitimate emergency changes or amplify a bad configuration.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q208</span><span>How do you implement GitOps?</span></summary><div class="qa-a">
+<p>Store desired infrastructure configuration in Git and make reviewed commits the trigger for controlled reconciliation. A Terraform workflow controller or CI system plans changes, applies policy/approval gates and serializes writes to each state.</p>
+<p>Continuously detect drift and record applied commits. Distinguish this from in-cluster Kubernetes GitOps tools: Terraform normally runs finite plan/apply operations and manages its own state. Unrestricted auto-apply on every branch is not a safe implementation of GitOps.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q209</span><span>How do you manage module versions?</span></summary><div class="qa-a">
+<p>Publish tested modules with semantic versions and a clear input/output contract. Pin production consumers to reviewed versions and use automated upgrade pull requests with plans and integration checks.</p>
+<p>Registry modules use version constraints; Git modules need controlled refs, preferably immutable commits. Changes that rename resource addresses require migration handling, such as moved blocks, to avoid accidental recreation. A release tag without compatibility tests is not enough for hundreds of dependent stacks.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q210</span><span>How do you handle rollbacks?</span></summary><div class="qa-a">
+<p>Terraform has no general transaction rollback for already-applied infrastructure changes. Reverting configuration and planning again can return some settings, but may replace resources or be blocked by provider/API behavior.</p>
+<p>Data deletion requires backups or platform recovery; an old state file does not recreate lost data. Prefer a reviewed forward fix when safer. Keep immutable artifacts, compatible schemas and documented restoration procedures so infrastructure and application recovery can be coordinated.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q211</span><span>State file accidentally deleted.</span></summary><div class="qa-a">
+<p>Stop applies and identify the exact backend, workspace, state key and last successful run. Recover the correct object version or backup, including its management lineage rather than inventing a replacement state.</p>
+<p>Validate the recovered snapshot against actual resources through a reviewed plan. If backups are unavailable, inventory and import each managed object into matching configuration. Do not accept a plan full of creates merely because infrastructure still exists; Terraform has lost the bindings that explain ownership.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q212</span><span>Two engineers run apply simultaneously.</span></summary><div class="qa-a">
+<p>With correctly configured locking on the same state, one writer holds the lock and the other waits or fails. The second run must plan against the state left by the first run rather than applying obsolete assumptions.</p>
+<p>If locking was disabled or states differ, stop competing runs and inspect cloud operations plus state history. Reconcile successful objects and ownership before proceeding. CI serialization helps prevent conflicts, but backend locking is still needed for engineers and other automation outside CI.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q213</span><span>Resource exists but not in state.</span></summary><div class="qa-a">
+<p>Verify that no other Terraform state already owns the object. Add matching resource configuration and import the real object ID into its intended address using an import block or supported CLI workflow.</p>
+<p>Review the next plan for replacements and unexpected changes, adjusting configuration to the approved desired state. A data source is appropriate only if this stack should read, not manage, the object. Creating a duplicate block without import can trigger a duplicate create or name-conflict failure.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q214</span><span>Apply fails halfway.</span></summary><div class="qa-a">
+<p>Terraform usually records successful operations even when a later operation fails. Preserve logs, the latest state and any local recovery file, then inspect the failed API call and the actual cloud object status.</p>
+<p>Fix the cause and generate a fresh plan. An API timeout can leave a resource created remotely but missing from state, requiring import rather than another create attempt. Avoid restoring old state blindly because that discards valid bindings from operations that already succeeded.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q215</span><span>Drift detected in production.</span></summary><div class="qa-a">
+<p>Identify the exact changed attributes and correlate them with audit logs, incident work or other automation. Decide with the owner whether the real environment or the code represents the approved state.</p>
+<p>For an unauthorized change, apply reviewed configuration to revert it. For an approved change, update code and confirm the next plan converges. Refresh-only recording does not update configuration intent, so a later normal plan can still try to undo the same difference.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q216</span><span>Terraform destroys critical resource accidentally.</span></summary><div class="qa-a">
+<p>Contain the incident by stopping further runs and dependent destructive changes. Determine whether deletion protection, soft deletion, snapshots or backups allow recovery; restore the real service and data through supported procedures.</p>
+<p>An older state snapshot cannot resurrect a deleted database. Reconcile Terraform with the recovered object&#x27;s identity and review all related dependencies. Prevent recurrence with plan review, least-privilege credentials, policy checks, cloud deletion protection and tested recovery, with prevent_destroy as an additional configuration safeguard.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q217</span><span>Backend unavailable.</span></summary><div class="qa-a">
+<p>Stop managed changes until the backend is accessible; existing cloud infrastructure normally keeps running. Diagnose DNS, network, identity, permission and storage-service availability.</p>
+<p>Do not switch casually to empty local state, because a second source of truth can create duplicates or conflicting ownership. A disaster-recovery backend transition requires a verified snapshot, fenced writers and a coordinated migration. Once restored, verify locking and state identity before generating a fresh plan.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q218</span><span>Azure Storage backend corrupted.</span></summary><div class="qa-a">
+<p>Distinguish a corrupted state blob from an Azure Storage service outage or inaccessible credentials. Stop writers, preserve evidence and recover a verified previous blob version or snapshot using configured recovery capabilities.</p>
+<p>Check the state key/workspace, lineage and serial and ensure no active lease-owning run remains before coordinated replacement. Re-plan against actual Azure resources to find changes made after the recovered version. Add versioning/retention, least privilege and periodic restore tests if the failure exposed recovery gaps.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q219</span><span>Terraform upgrade breaks modules.</span></summary><div class="qa-a">
+<p>Stop rollout of the new Terraform/provider/module combination. Reproduce in a safe environment using the last known-good versions and inspect release notes, schema changes, deprecated arguments and state-format compatibility.</p>
+<p>Pin a compatible combination or update the modules with tests and reviewed plans. Do not assume downgrading a provider can read state upgraded by a newer schema. Backups and staged upgrade testing make recovery possible; apply no plan containing unexplained mass replacements.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q220</span><span>Large infrastructure takes 45 minutes to apply.</span></summary><div class="qa-a">
+<p>Measure where time is spent: API reads, resource creation waits, throttling, graph serialization or runner/network performance. Use run logs and provider metrics to identify the critical path.</p>
+<p>Remove unnecessary depends_on links, tune parallelism within API limits and split state at coherent ownership/lifecycle boundaries when beneficial. Pin dependencies and cache downloads in CI. Do not disable refresh or rely on routine -target merely to get faster numbers; both can hide dependencies or reduce plan completeness.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q221</span><span>Design a multi-region Kubernetes platform for 10,000 developers.</span></summary><div class="qa-a">
+<p>I would first define workload count, concurrency, tenant trust, data residency, availability targets and who operates the platform. Ten thousand developers does not specify the number of Pods or justify one enormous cluster.</p>
+<p>I would build a fleet of regional, multi-zone clusters partitioned by environment and trust boundary. Teams get namespace-level quotas, scoped RBAC, workload identity, approved templates and GitOps onboarding through a self-service portal. High-risk tenants receive separate clusters.</p>
+<p>A central platform layer manages versioned cluster templates, policy, artifact promotion and inventory, while regional controllers continue operating independently. Images and required artifacts are replicated regionally. Metrics, traces and audit logs use tenant-aware access and retention.</p>
+<p>Capacity is based on measured requests, API/watch load, IP space and upgrade headroom. Upgrades and policy changes roll through canary clusters before wider waves. I would validate the design with load tests, tenant-isolation tests and regional-failure drills, measuring provisioning lead time, availability and recovery rather than developer count alone.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q222</span><span>Design a disaster recovery strategy for EKS/AKS.</span></summary><div class="qa-a">
+<p>I would assign each service an RTO, the maximum recovery duration, and an RPO, the maximum acceptable data-loss interval. Critical services may need warm standby; less critical services may justify slower reconstruction from backups.</p>
+<p>For EKS/AKS, infrastructure code recreates clusters, networks, identity, DNS and storage integration. GitOps restores application configuration; image registries and configuration artifacts are replicated. Managed control-plane recovery is not a substitute for backing up application data and necessary Kubernetes objects.</p>
+<p>Databases use supported cross-region replication and/or immutable backups, with encryption keys and restore permissions available in the recovery region. During failure, fence old writers, select a consistent recovery point, promote data services, start applications and validate health before routing traffic.</p>
+<p>I would test recovery in an isolated account/subscription or region, record achieved RTO/RPO and verify quotas and capacity. Failback is a separate controlled migration because the recovery region accumulates new writes after promotion.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q223</span><span>How would you run 50,000 containers?</span></summary><div class="qa-a">
+<p>I would translate 50,000 containers into Pods, resource requests, workload types, traffic patterns and failure domains. Several containers can share one Pod, so container count alone is not a scheduler-sizing metric.</p>
+<p>I would use multiple clusters or independently operated cells, choosing size from tested control-plane, node and CNI limits. Node pools match CPU/memory/GPU needs and preserve capacity for failures and upgrades. Address pools, DNS, registry throughput, logging and metrics cardinality must support the intended scale.</p>
+<p>Autoscaling handles measured demand, while quotas and priority classes prevent one workload from exhausting shared capacity. Image caching and staged rollouts reduce startup storms. Stateful workloads receive separate storage and recovery planning.</p>
+<p>I would load-test scheduling throughput, API latency and network behavior at target density, then simulate node and zone loss. The final cluster count follows those results and blast-radius requirements rather than an arbitrary assumption that one cluster is always cheaper or simpler.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q224</span><span>How would you manage 500 Terraform repositories?</span></summary><div class="qa-a">
+<p>I would inventory repositories by owner, environment, state backend, criticality and dependency. Standard templates provide approved backend settings, version pins, CI checks and short-lived authentication. Each stack has an accountable owner and a recovery process.</p>
+<p>A central module registry supplies tested versions; automated upgrade pull requests produce reviewed plans. CI serializes each state independently and separates plan/apply privileges. Policies detect dangerous IAM, networking and destructive changes before approval.</p>
+<p>Cross-stack dependencies use narrow, explicit interfaces rather than widespread full-state read access. Drift detection, cost estimates and an inventory dashboard show outdated providers, failed runs and unmanaged ownership gaps.</p>
+<p>I would consolidate repositories only where ownership and release cadence fit, not merely to reduce the number. Platform success is measured by safe change lead time, policy compliance, recovery reliability and reduced maintenance work, with canary upgrades preventing a common module bug from affecting all 500 repositories at once.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q225</span><span>Design a secure multi-tenant Kubernetes platform.</span></summary><div class="qa-a">
+<p>I would classify tenants by trust level. Cooperative internal teams can share clusters with namespaces, RBAC, quotas and network isolation; hostile or regulated tenants may require separate clusters, accounts and stronger runtime boundaries.</p>
+<p>Shared clusters enforce Restricted Pod security, controlled admission, default-deny traffic, restricted egress and workload-specific identities. Tenant users cannot modify cluster-wide policy, privileged agents or node labels used for isolation. Host mounts, privileged containers and broad service-account permissions are prohibited by policy where applicable.</p>
+<p>Resource quotas, API fairness and dedicated node pools reduce noisy-neighbor effects. Storage classes, encryption keys and observability access follow tenant boundaries. Taints alone are insufficient; affinity and protected labels control dedicated placement.</p>
+<p>I would threat-model node compromise, secret exfiltration and cross-tenant network paths, then verify with isolation tests and audited access. Shared-kernel risk remains explicit, and tenants requiring a stronger boundary move to separate infrastructure rather than receiving a misleading promise of perfect namespace isolation.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q226</span><span>How would you reduce cloud costs by 40%?</span></summary><div class="qa-a">
+<p>I would establish a reliable baseline by account, service, environment and unit of business output. Forty percent is a target to test, not a saving I can promise before seeing workload and pricing data.</p>
+<p>First remove idle resources, unused disks, oversized development environments and wasteful log retention. Then right-size compute and Kubernetes requests using observed peaks, apply autoscaling and schedules, and reduce unnecessary NAT or cross-zone/region transfer.</p>
+<p>Stable demand may justify commitments, while interruptible workloads can use spot/preemptible capacity with graceful recovery. Storage lifecycle policies, caching and efficient application code can reduce recurring costs without merely shifting them elsewhere.</p>
+<p>I would model each change&#x27;s cost, implementation effort and availability risk, validate through canaries and compare normalized cost per request or customer. Reliability, recovery targets and contractual constraints remain acceptance criteria. Savings are counted from measured bills after demand adjustment, not from a list of theoretical discounts.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q227</span><span>Design a GitOps platform from scratch.</span></summary><div class="qa-a">
+<p>I would use Git as the reviewed desired-state source and Argo CD or Flux as scoped pull-based reconcilers in each cluster. Repository layout separates platform configuration and application environments, with clear ownership and protected production changes.</p>
+<p>CI builds once, tests, scans and signs immutable images. Promotion updates the approved digest in environment configuration instead of rebuilding the same release. Secrets come from an external manager or controlled encrypted workflow, never plaintext Git.</p>
+<p>Controllers use least privilege and policy checks, report drift and reconcile within defined boundaries. Progressive delivery checks readiness and service metrics before increasing traffic. Infrastructure changes use a coordinated Terraform workflow rather than conflicting ownership between tools.</p>
+<p>I would design dependency ordering, emergency suspension, rollback and bootstrap recovery explicitly. Git, registries, identity and signing services require availability and backups. A test rebuilds a cluster from the platform definitions and verifies that applications recover without undocumented manual setup.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q228</span><span>Design Kubernetes for a banking application.</span></summary><div class="qa-a">
+<p>I would begin with transaction consistency, confidentiality, audit, availability and jurisdiction-specific requirements agreed with security and compliance owners. Kubernetes is the application platform, not proof of regulatory compliance.</p>
+<p>The design uses private, multi-zone clusters, strongly authenticated administrative access, workload identity, encrypted data and restricted egress. Network policies, scoped RBAC, admission checks and verified images limit attack paths. Audit records are centrally protected against tampering.</p>
+<p>Transaction services use idempotency keys, explicit timeout/retry rules and durable messaging. Databases use supported replication, backup and failover with clear writer fencing; balance correctness matters more than blindly maximizing availability during partitions.</p>
+<p>Releases are gradual, approved and backward compatible with schemas. Dedicated capacity and load tests cover peak demand. Disaster-recovery exercises validate transaction reconciliation, achieved RTO/RPO and key availability. I would include third-party payment dependencies in failure tests because a healthy cluster cannot complete payments when a required external system is unavailable.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q229</span><span>Design a highly available CI/CD platform.</span></summary><div class="qa-a">
+<p>I would separate a resilient control plane from disposable job runners. Controllers and their metadata use supported high-availability storage or a managed service, with backups and multi-zone availability. Job queues allow interrupted work to be retried predictably.</p>
+<p>Runners are ephemeral, scoped to trust level and given short-lived credentials. Untrusted pull requests never share privileged execution context with production deployment jobs. Artifact registries and caches are replicated or recoverable, and releases use immutable digests.</p>
+<p>Deployment jobs are idempotent where possible, serialize target state and require protected approvals. Cancellation and timeout behavior must account for external operations that continue after a runner disappears.</p>
+<p>I would monitor queue time, failure rate, artifact integrity and recovery time, then test controller loss, zone loss, unavailable identity and registry outages. Backups alone are insufficient if restoration depends on the same failed CI platform; bootstrap credentials and recovery procedures need an independent path.</p>
+</div></details>
+<details class="qa"><summary><span class="qnum">Q230</span><span>Design infrastructure that survives a complete regional outage.</span></summary><div class="qa-a">
+<p>I would define service-specific RTO/RPO and choose active-active or warm standby accordingly. Each region is an independently functional cell with networking, compute, identity dependencies, images, keys, observability and enough available recovery capacity.</p>
+<p>A global routing layer shifts traffic only after application-level health and data readiness checks. Stateful systems replicate through supported mechanisms; strong cross-region consistency trades latency and partition availability, while asynchronous replication permits nonzero data loss.</p>
+<p>During an outage, fence the old writer, promote the selected data replica or restore a consistent backup, validate the application and gradually route users. Prevent split brain even when the failed region is only unreachable rather than fully stopped.</p>
+<p>Infrastructure code and replicated artifacts rebuild missing components, but quotas, account access, DNS and external services must also survive. Regular full-region drills prove recovery targets. Failback reconciles new writes and reverses replication deliberately; simply turning the old region back on can produce inconsistent data.</p>
+</div></details>
+</div>
     </div></section>
   </main>
   <footer><div class="shell"><span>Start with the terminal. Finish with proof.</span><span class="mono">14 weeks · 3 hours/day</span></div></footer>
@@ -565,7 +1550,9 @@
         ['.flow-step', 'reveal-stamp'],
         ['.interview > *', ''],
         ['.stack-grid > *', ''],
-        ['.badge', 'reveal-stamp']
+        ['.badge', 'reveal-stamp'],
+        ['.qa', ''],
+        ['.qa-topic-head', 'reveal-stamp']
       ];
       var targets = [];
 
