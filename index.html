@@ -1,0 +1,612 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#fff8e7" />
+  <link rel="icon" href="data:," />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <title>DevOps Roadmap — Zero to Hired</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      --bg: #fff8e7;
+      --paper: #fffdf5;
+      --text: #101010;
+      --muted: #39352f;
+      --ink: #111111;
+      --blue: #3fa9f5;
+      --blue-soft: #bfe6ff;
+      --green: #00c2a8;
+      --green-soft: #a9f0df;
+      --amber: #ff9f1c;
+      --amber-soft: #ffd37a;
+      --violet: #7b5cff;
+      --violet-soft: #c9bbff;
+      --rose: #ff4d8d;
+      --rose-soft: #ffb5cf;
+      --yellow: #ffc700;
+      --coral: #ff6b4a;
+      --mint: #7de3a7;
+      --sky: #3fa9f5;
+      --line: #111111;
+      --shadow: 7px 7px 0 #111111;
+      --shadow-small: 4px 4px 0 #111111;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #fff8e7;
+        --paper: #fffdf5;
+        --text: #101010;
+        --muted: #39352f;
+        --ink: #111111;
+        --line: #111111;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 0;
+      color: var(--text);
+      font-family: "Space Grotesk", sans-serif;
+      line-height: 1.5;
+      overflow-x: hidden;
+      background-color: var(--bg);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Ccircle cx='4' cy='4' r='1.6' fill='%23111111' opacity='.12'/%3E%3C/svg%3E");
+    }
+    a { color: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    .shell { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+    .mono { font-family: "IBM Plex Mono", monospace; }
+
+    .hero { position: relative; padding: 74px 0 48px; overflow: hidden; }
+    .hero::before {
+      content: ""; position: absolute; width: 118px; height: 118px; border: 22px solid var(--yellow);
+      border-radius: 50%; top: 24px; right: 4vw; transform: rotate(12deg); z-index: -1;
+    }
+    .hero::after {
+      content: ""; position: absolute; width: 100px; height: 24px; left: 2vw; bottom: 12px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='24' viewBox='0 0 22 24'%3E%3Cpath d='M-5 24L15 0M7 24L27 0' stroke='%23FF6B4A' stroke-width='8'/%3E%3C/svg%3E");
+      transform: rotate(-7deg); z-index: -1;
+    }
+    .hero-grid { display: grid; grid-template-columns: minmax(0,1.18fr) minmax(340px,.82fr); gap: 48px; align-items: center; }
+    .prompt-line {
+      display: inline-flex; align-items: center; gap: 10px; padding: 8px 12px;
+      color: var(--ink); background: var(--yellow); border: 3px solid var(--line);
+      box-shadow: var(--shadow-small); transform: rotate(-2deg);
+      font: 700 13px/1.3 "IBM Plex Mono", monospace;
+    }
+    .prompt-line::before { content: ">"; }
+    h1, h2, .rhythm .big { font-family: "Archivo Black", sans-serif; font-weight: 400; }
+    h1 { margin: 24px 0 18px; max-width: 790px; font-size: clamp(48px, 7.5vw, 92px); line-height: .92; letter-spacing: -.055em; }
+    .hero-copy { max-width: 650px; margin: 0; color: var(--muted); font-size: clamp(17px, 2vw, 21px); font-weight: 500; }
+    .stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 34px; }
+    .stat { padding: 16px 14px; background: var(--paper); border: 3px solid var(--line); box-shadow: var(--shadow-small); }
+    .stat:nth-child(1){background:var(--sky);transform:rotate(-1.5deg)}
+    .stat:nth-child(2){background:var(--yellow);transform:rotate(1deg)}
+    .stat:nth-child(3){background:var(--mint);transform:rotate(-.7deg)}
+    .stat:nth-child(4){background:var(--rose-soft);transform:rotate(1.5deg)}
+    .stat strong { display: block; font: 700 22px/1 "IBM Plex Mono", monospace; }
+    .stat span { display: block; margin-top: 7px; color: var(--ink); font-size: 12px; font-weight: 600; }
+    .current { position: relative; margin-top: 20px; display: flex; gap: 12px; align-items: center; padding: 15px 17px; border: 3px solid var(--line); background: var(--paper); box-shadow: var(--shadow-small); }
+    .current::after { content:"✦"; position:absolute; right:-12px; top:-22px; width:42px; height:42px; display:grid; place-items:center; background:var(--rose); border:3px solid var(--line); transform:rotate(12deg); font-size:22px; }
+    .pulse { width: 13px; height: 13px; border-radius: 50%; background: var(--coral); border: 2px solid var(--line); flex: none; animation: pulse 1.8s infinite; }
+    .current b { display: block; font-size: 14px; }
+    .current span { color: var(--muted); font-size: 12px; }
+    @keyframes pulse { 50% { transform: scale(1.35); } }
+
+    .loop-card { position: relative; min-height: 410px; padding: 28px; background: var(--blue-soft); border: 4px solid var(--line); box-shadow: 10px 10px 0 var(--line); transform: rotate(1deg); overflow: hidden; }
+    .loop-card::before { content:""; position:absolute; width:125px; height:125px; right:-50px; bottom:-42px; border-radius:50%; background:var(--yellow); border:4px solid var(--line); }
+    .loop-card::after { content:"+"; position:absolute; left:20px; bottom:10px; color:var(--rose); font:400 54px/1 "Archivo Black",sans-serif; transform:rotate(12deg); }
+    .loop-title { margin: 0; font: 400 20px/1.2 "Archivo Black",sans-serif; }
+    .loop-sub { margin: 6px 0 0; color: var(--muted); font-size: 13px; font-weight: 600; }
+    .loop-visual { position: relative; width: 100%; aspect-ratio: 1.28; margin-top: 18px; }
+    .loop-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+    .loop-path { fill: none; stroke: var(--line); stroke-width: 28; }
+    .loop-active { fill: none; stroke: var(--rose); stroke-width: 17; stroke-dasharray: 42 13 28 13; animation: dash 12s linear infinite; }
+    @keyframes dash { to { stroke-dashoffset: -192; } }
+    .loop-label { position: absolute; font: 700 11px/1 "IBM Plex Mono", monospace; background: var(--yellow); border: 2px solid var(--line); padding: 7px 9px; box-shadow: 2px 2px 0 var(--line); }
+    .loop-label:nth-of-type(even){ background:var(--mint); transform:rotate(3deg); }
+    .loop-label:nth-of-type(3n){ background:var(--paper); transform:rotate(-3deg); }
+    .l1{left:3%;top:45%}.l2{left:20%;top:16%}.l3{left:46%;top:7%}.l4{right:5%;top:24%}.l5{right:4%;bottom:25%}.l6{left:48%;bottom:8%}.l7{left:18%;bottom:15%}.l8{left:0;bottom:32%}
+
+    .intro { position:relative; display:grid; grid-template-columns:.75fr 1.25fr; gap:42px; align-items:start; padding: 72px 0 46px; }
+    .intro::after { content:""; position:absolute; right:4%; bottom:2px; width:82px; height:34px; border-top:7px solid var(--violet); border-bottom:7px solid var(--violet); transform:skewX(-24deg) rotate(4deg); }
+    .section-tag { display:inline-block; color:var(--ink); background:var(--yellow); border:2px solid var(--line); padding:6px 9px; box-shadow:3px 3px 0 var(--line); transform:rotate(-1.5deg); font:700 11px/1.3 "IBM Plex Mono", monospace; }
+    h2 { margin:14px 0 14px; font-size:clamp(31px,4vw,50px); line-height:1; letter-spacing:-.04em; }
+    .lede { margin:0; color:var(--muted); font-size:17px; font-weight:500; }
+    .definition { font-size:clamp(22px,3.2vw,38px); line-height:1.2; letter-spacing:-.03em; margin:0; font-weight:600; }
+    .definition em { display:inline; padding:0 .15em; color:var(--ink); background:var(--rose-soft); font-style:normal; box-decoration-break:clone; -webkit-box-decoration-break:clone; }
+
+    .pipeline-wrap { position:relative; padding: 46px 0 88px; }
+    .pipeline-wrap::after { content:"+"; position:absolute; top:28px; right:1%; color:var(--violet); font:400 46px/1 "Archivo Black",sans-serif; transform:rotate(14deg); }
+    .pipeline { position:relative; display:grid; grid-template-columns: repeat(5,1fr); gap:16px; margin-top:32px; }
+    .pipeline::before { content:""; position:absolute; left:8%; right:8%; top:31px; border-top:5px dotted var(--line); z-index:0; }
+    .phase-node { position:relative; display:block; text-decoration:none; min-width:0; padding:0 8px 13px; text-align:center; z-index:1; }
+    .phase-node::before { display:none; }
+    .dot { position:relative; top:auto; left:auto; display:grid; place-items:center; width:62px; height:62px; margin:0 auto 12px; border-radius:0; background:var(--phase); border:4px solid var(--line); box-shadow:var(--shadow-small); transform:rotate(45deg); }
+    .dot::after { content:attr(data-num); }
+    .phase-node:nth-child(1) .dot::after{content:"01"}.phase-node:nth-child(2) .dot::after{content:"02"}.phase-node:nth-child(3) .dot::after{content:"03"}.phase-node:nth-child(4) .dot::after{content:"04"}.phase-node:nth-child(5) .dot::after{content:"05"}
+    .dot::after { transform:rotate(-45deg); color:var(--ink); font:700 13px/1 "IBM Plex Mono",monospace; }
+    .phase-node.active::after { content:"YOU ARE HERE"; position:absolute; top:-28px; left:50%; width:72px; min-height:34px; display:grid; place-items:center; background:var(--rose); border:2px solid var(--line); transform:translateX(-50%) rotate(-7deg); font:700 9px/1.05 "IBM Plex Mono",monospace; clip-path:polygon(50% 0,61% 23%,85% 8%,80% 34%,100% 50%,77% 61%,89% 88%,60% 76%,50% 100%,39% 76%,11% 90%,23% 61%,0 50%,21% 35%,15% 8%,39% 23%); padding:9px; }
+    .phase-node small { display:block; color:var(--muted); font:700 10px/1.2 "IBM Plex Mono",monospace; }
+    .phase-node strong { display:block; margin-top:6px; font-size:14px; line-height:1.2; }
+    .phase-node:hover .dot { transform:translate(2px,2px) rotate(45deg); box-shadow:2px 2px 0 var(--line); }
+    .phase-node:hover strong { text-decoration:underline; text-decoration-thickness:2px; }
+
+    .milestones { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:14px; margin-top:38px; }
+    .milestone { padding:15px 13px; background:var(--paper); border:3px solid var(--line); box-shadow:var(--shadow-small); min-width:0; }
+    .milestone:nth-child(1){background:var(--sky);transform:rotate(-2deg)}
+    .milestone:nth-child(2){background:var(--mint);transform:rotate(1.5deg)}
+    .milestone:nth-child(3){background:var(--amber-soft);transform:rotate(-1deg)}
+    .milestone:nth-child(4){background:var(--violet-soft);transform:rotate(2deg)}
+    .milestone:nth-child(5){background:var(--rose-soft);transform:rotate(-1.5deg)}
+    .milestone time { display:block; color:var(--ink); font:700 12px/1.2 "IBM Plex Mono",monospace; }
+    .milestone span { display:block; margin-top:5px; color:var(--ink); font-size:12px; font-weight:600; }
+
+    .phase { position:relative; --phase:var(--blue); --soft:var(--blue-soft); scroll-margin-top:20px; padding: 84px 0 96px; border-top:0; }
+    .phase::before { content:""; position:absolute; left:0; right:0; top:0; height:18px; background-size:34px 18px; background-repeat:repeat-x; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='18' viewBox='0 0 34 18'%3E%3Cpath d='M0 16L8.5 3 17 16 25.5 3 34 16' fill='none' stroke='%23111111' stroke-width='4'/%3E%3C/svg%3E"); }
+    .phase::after { content:""; position:absolute; width:46px; height:46px; right:3vw; top:42px; background:var(--phase); border:3px solid var(--line); border-radius:50% 0 50% 0; transform:rotate(18deg); }
+    .phase.green { --phase:var(--green); --soft:var(--green-soft); }
+    .phase.amber { --phase:var(--amber); --soft:var(--amber-soft); }
+    .phase.violet { --phase:var(--violet); --soft:var(--violet-soft); }
+    .phase.rose { --phase:var(--rose); --soft:var(--rose-soft); }
+    .phase-head { display:grid; grid-template-columns:130px 1fr auto; gap:24px; align-items:center; margin-bottom:34px; }
+    .phase-number { display:grid; place-items:center; width:104px; height:84px; color:var(--ink); background:var(--phase); border:4px solid var(--line); box-shadow:var(--shadow); transform:rotate(-3deg); font:700 clamp(42px,6vw,70px)/1 "IBM Plex Mono",monospace; letter-spacing:-.08em; }
+    .phase h2 { margin:0; font-size:clamp(31px,4vw,52px); }
+    .phase-meta { color:var(--ink); background:var(--yellow); border:3px solid var(--line); box-shadow:var(--shadow-small); padding:10px 13px; font:700 11px/1 "IBM Plex Mono",monospace; white-space:nowrap; transform:rotate(2deg); }
+    .weeks { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; align-items:start; }
+    .amber .weeks, .violet .weeks, .rose .weeks { grid-template-columns:repeat(2,minmax(0,1fr)); }
+    .week { background:var(--phase); border:4px solid var(--line); box-shadow:var(--shadow); overflow:hidden; }
+    .week:nth-child(odd){transform:rotate(-.65deg)}
+    .week:nth-child(even){transform:rotate(.65deg)}
+    .week:hover { transform:translate(3px,3px) rotate(0); box-shadow:4px 4px 0 var(--line); }
+    .week-top { padding:22px 22px 19px; }
+    .week-id { display:inline-block; color:var(--ink); background:var(--paper); border:2px solid var(--line); padding:5px 7px; font:700 11px/1 "IBM Plex Mono",monospace; }
+    .week-date { display:block; margin-top:10px; color:var(--ink); font:700 12px/1.35 "IBM Plex Mono",monospace; }
+    .week h3 { margin:10px 0 14px; font:400 23px/1.05 "Archivo Black",sans-serif; letter-spacing:-.025em; }
+    .topics { margin:0; padding:0; list-style:none; display:flex; flex-wrap:wrap; gap:7px; }
+    .topics li { padding:5px 8px; background:var(--paper); color:var(--ink); border:2px solid var(--line); font:700 10px/1.2 "IBM Plex Mono",monospace; }
+    .week-notes { display:grid; gap:0; border-top:4px solid var(--line); background:var(--paper); }
+    .note { display:grid; grid-template-columns:23px 1fr; gap:10px; padding:15px 18px; font-size:13px; }
+    .note + .note { border-top:2px solid var(--line); }
+    .note svg { width:18px; height:18px; stroke:var(--ink); fill:none; stroke-width:2.2; margin-top:1px; }
+    .note b { display:inline-block; margin-bottom:4px; padding:2px 5px; color:var(--ink); background:var(--soft); border:1.5px solid var(--line); font-size:10px; font-family:"IBM Plex Mono",monospace; }
+    .note p { margin:0; color:var(--muted); font-weight:500; }
+    .note p + p { margin-top:8px; }
+    .watch-links { display:flex; flex-wrap:wrap; gap:7px; }
+    .note .watch-links a { display:inline-block; padding:6px 8px; color:var(--ink); background:var(--yellow); border:2px solid var(--line); box-shadow:2px 2px 0 var(--line); text-decoration:none; font-size:11px; font-weight:700; }
+    .note .watch-links a:nth-child(even){background:var(--mint)}
+    .note .watch-links a:hover { transform:translate(2px,2px); box-shadow:none; }
+
+    .rhythm { position:relative; padding:66px 0; background:var(--yellow); color:var(--ink); border-top:4px solid var(--line); border-bottom:4px solid var(--line); overflow:hidden; }
+    .rhythm::before { content:""; position:absolute; width:110px; height:110px; left:-35px; top:-38px; border:18px solid var(--rose); border-radius:50%; }
+    .rhythm::after { content:"+++"; position:absolute; right:2vw; bottom:5px; color:var(--violet); font:400 42px/1 "Archivo Black",sans-serif; letter-spacing:8px; transform:rotate(-8deg); }
+    .rhythm-grid { position:relative; display:grid; grid-template-columns:1.1fr repeat(3,1fr); gap:16px; }
+    .rhythm-item { padding:25px; background:var(--paper); border:3px solid var(--line); box-shadow:var(--shadow-small); }
+    .rhythm-item:nth-child(2){background:var(--sky);transform:rotate(-1deg)}
+    .rhythm-item:nth-child(3){background:var(--mint);transform:rotate(1deg)}
+    .rhythm-item:nth-child(4){background:var(--rose-soft);transform:rotate(-1deg)}
+    .rhythm-item strong { display:block; font-size:20px; line-height:1.15; letter-spacing:-.02em; }
+    .rhythm-item span { display:block; margin-top:8px; color:var(--muted); font-size:13px; font-weight:500; }
+    .rhythm .section-tag { margin:0 0 12px; }
+    .rhythm .big { font-size:clamp(28px,4vw,45px); }
+
+    .architecture { margin:34px 0 32px; padding:28px; border:4px solid var(--line); background:var(--soft); box-shadow:var(--shadow); }
+    .architecture h3 { margin:0 0 6px; font:400 22px/1.2 "Archivo Black",sans-serif; }
+    .architecture > p { margin:0; color:var(--muted); font-size:13px; font-weight:500; }
+    .flow { display:grid; grid-template-columns:repeat(6,minmax(0,1fr)); gap:22px; margin-top:24px; }
+    .flow-step { position:relative; min-width:0; padding:16px 9px; background:var(--paper); border:3px solid var(--line); box-shadow:3px 3px 0 var(--line); text-align:center; }
+    .flow-step:nth-child(odd){transform:rotate(-1deg)}.flow-step:nth-child(even){transform:rotate(1deg)}
+    .flow-step:not(:last-child)::after { content:"→"; position:absolute; right:-20px; top:50%; transform:translateY(-50%); color:var(--ink); font:700 21px/1 "IBM Plex Mono",monospace; }
+    .flow-step svg { width:25px; height:25px; stroke:var(--phase); fill:none; stroke-width:2.2; }
+    .flow-step b { display:block; margin-top:8px; font-size:12px; }
+    .flow-step span { display:block; margin-top:3px; color:var(--muted); font-size:10px; }
+    .interview { display:grid; grid-template-columns:.7fr 1.3fr; gap:34px; margin-top:38px; }
+    .interview h3 { margin:15px 0 8px; font:400 25px/1.1 "Archivo Black",sans-serif; }
+    .question-list { margin:0; padding:0; list-style:none; display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:10px; }
+    .question-list li { padding:13px; border:3px solid var(--line); background:var(--paper); box-shadow:3px 3px 0 var(--line); font-size:13px; font-weight:600; }
+    .question-list li::before { content:"?"; display:inline-grid; place-items:center; width:23px; height:23px; margin-right:8px; color:var(--ink); background:var(--yellow); border:2px solid var(--line); border-radius:50%; font:700 11px/1 "IBM Plex Mono",monospace; }
+
+    .stack { position:relative; padding:74px 0 90px; border-top:4px solid var(--line); background-color:var(--paper); background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='64' viewBox='0 0 64 64'%3E%3Cpath d='M16 5v22M5 16h22' stroke='%23FF4D8D' stroke-width='4'/%3E%3C/svg%3E"); }
+    .stack-grid { display:grid; grid-template-columns:.7fr 1.3fr; gap:42px; }
+    .badge-grid { display:flex; flex-wrap:wrap; gap:12px; align-content:flex-start; }
+    .badge { padding:11px 14px; border:3px solid var(--line); background:var(--paper); box-shadow:3px 3px 0 var(--line); font:700 12px/1 "IBM Plex Mono",monospace; }
+    .badge:nth-child(5n+1){background:var(--sky);transform:rotate(-2deg)}.badge:nth-child(5n+2){background:var(--mint);transform:rotate(1deg)}.badge:nth-child(5n+3){background:var(--amber-soft);transform:rotate(-1deg)}.badge:nth-child(5n+4){background:var(--violet-soft);transform:rotate(2deg)}.badge:nth-child(5n){background:var(--rose-soft);transform:rotate(-2deg)}
+    footer { border-top:4px solid var(--line); padding:30px 0 40px; color:var(--ink); background:var(--coral); font-size:12px; font-weight:700; }
+    footer .shell { display:flex; justify-content:space-between; gap:20px; }
+
+    /* Scroll feedback: a precise reading-progress line and a compact phase rail. */
+    .scroll-progress {
+      position: fixed; inset: 0 0 auto; height: 7px; z-index: 100;
+      background: color-mix(in srgb, var(--paper) 82%, transparent);
+      border-bottom: 2px solid var(--line); pointer-events: none;
+    }
+    .scroll-progress i {
+      display: block; width: 100%; height: 100%; background: var(--rose);
+      transform: scaleX(0); transform-origin: left center; will-change: transform;
+    }
+    .scroll-rail {
+      position: fixed; right: 18px; top: 50%; z-index: 90; display: grid; gap: 7px;
+      translate: 0 -50%; padding: 8px; background: var(--paper);
+      border: 3px solid var(--line); box-shadow: 4px 4px 0 var(--line);
+    }
+    .scroll-rail a {
+      display: grid; place-items: center; width: 32px; height: 32px;
+      color: var(--ink); background: var(--paper); border: 2px solid var(--line);
+      text-decoration: none; font: 700 9px/1 "IBM Plex Mono", monospace;
+      transition: background .2s ease, transform .2s ease;
+    }
+    .scroll-rail a:hover { background: var(--yellow); transform: translate(-2px, -2px); }
+    .scroll-rail a.is-current { background: var(--rail-color); box-shadow: 2px 2px 0 var(--line); transform: translate(-2px, -2px); }
+    .scroll-rail a:focus-visible { outline: 3px solid var(--rose); outline-offset: 3px; }
+    .loop-visual { transform: translateY(var(--loop-parallax, 0px)); will-change: transform; }
+    .phase::after { transform: translateY(var(--shape-shift, 0px)) rotate(18deg); will-change: transform; }
+
+    /* Motion system: bold Memphis stamps on entry, gentle geometric movement at rest. */
+    @keyframes hero-enter {
+      from { opacity: 0; translate: 0 22px; }
+      to { opacity: 1; translate: 0 0; }
+    }
+    @keyframes card-pop {
+      0% { opacity: 0; scale: .88; translate: 0 18px; }
+      72% { opacity: 1; scale: 1.035; translate: 0 -3px; }
+      100% { opacity: 1; scale: 1; translate: 0 0; }
+    }
+    @keyframes memphis-float {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -8px; }
+    }
+    @keyframes label-bob {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 -5px; }
+    }
+    @keyframes tiny-turn {
+      0%, 100% { rotate: 0deg; }
+      50% { rotate: 8deg; }
+    }
+    @keyframes arrow-nudge {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 5px 0; }
+    }
+    @keyframes arrow-nudge-down {
+      0%, 100% { translate: 0 0; }
+      50% { translate: 0 4px; }
+    }
+
+    .prompt-line { animation: hero-enter .55s cubic-bezier(.2,.8,.2,1) both; }
+    .hero h1 { animation: hero-enter .68s .08s cubic-bezier(.2,.8,.2,1) both; }
+    .hero-copy { animation: hero-enter .68s .16s cubic-bezier(.2,.8,.2,1) both; }
+    .stat { animation: card-pop .55s cubic-bezier(.2,.8,.2,1) both; }
+    .stat:nth-child(1) { animation-delay: .22s; }
+    .stat:nth-child(2) { animation-delay: .29s; }
+    .stat:nth-child(3) { animation-delay: .36s; }
+    .stat:nth-child(4) { animation-delay: .43s; }
+    .current { animation: hero-enter .6s .5s cubic-bezier(.2,.8,.2,1) both; }
+    .loop-card { animation: card-pop .72s .16s cubic-bezier(.2,.8,.2,1) both; }
+    .hero::before { animation: memphis-float 4.8s ease-in-out infinite; }
+    .hero::after { animation: memphis-float 3.8s .5s ease-in-out infinite reverse; }
+    .loop-label { animation: label-bob 2.8s ease-in-out infinite; }
+    .loop-label:nth-of-type(2n) { animation-delay: -.7s; }
+    .loop-label:nth-of-type(3n) { animation-delay: -1.4s; }
+    .phase::after { animation: tiny-turn 4s ease-in-out infinite; }
+    .rhythm::after { animation: memphis-float 3.4s ease-in-out infinite; }
+    .flow-step:not(:last-child)::after { animation: arrow-nudge 1.4s ease-in-out infinite; }
+
+    .reveal-target {
+      opacity: 1;
+      translate: 0 46px;
+      transition: translate .78s cubic-bezier(.16,1,.3,1), scale .62s cubic-bezier(.16,1,.3,1), rotate .62s cubic-bezier(.16,1,.3,1);
+      transition-delay: var(--reveal-delay, 0ms);
+      will-change: translate, scale, rotate;
+    }
+    .reveal-target.reveal-stamp { scale: .9; translate: 0 26px; rotate: -1.4deg; }
+    .reveal-target.is-visible { translate: 0 0; scale: 1; rotate: 0deg; }
+    .week.reveal-target { translate: 0 34px; }
+    .week.reveal-target.is-visible { translate: 0 0; }
+    .badge.reveal-target { translate: 0 12px; }
+    .badge.reveal-target.is-visible { translate: 0 0; }
+
+    .week, .milestone, .rhythm-item, .flow-step, .badge, .phase-node .dot,
+    .note .watch-links a { transition: transform .2s ease, box-shadow .2s ease, translate .2s ease, rotate .2s ease; }
+    .milestone:hover, .rhythm-item:hover, .badge:hover { translate: 2px 2px; box-shadow: 1px 1px 0 var(--line); }
+    .note .watch-links a:hover { rotate: -1deg; }
+    .phase-node:focus-visible .dot, .note .watch-links a:focus-visible { outline: 4px solid var(--paper); outline-offset: 3px; }
+
+    @media (prefers-reduced-motion:reduce){
+      html{scroll-behavior:auto}
+      .pulse,.loop-active,.prompt-line,.hero h1,.hero-copy,.stat,.current,.loop-card,
+      .hero::before,.hero::after,.loop-label,.phase::after,.rhythm::after,.flow-step:not(:last-child)::after{animation:none}
+      .reveal-target,.reveal-target.reveal-stamp,.reveal-target.is-visible{opacity:1;translate:0 0;scale:1;transition:none}
+      .week,.milestone,.rhythm-item,.flow-step,.badge,.phase-node .dot,.note a{transition:none}
+    }
+    @media (max-width:1100px){
+      .scroll-rail { display:none; }
+    }
+    @media (max-width:900px){
+      .hero-grid,.intro,.stack-grid,.interview { grid-template-columns:1fr; }
+      .hero { padding-top:48px; }
+      .loop-card { min-height:auto; max-width:620px; }
+      .loop-visual { max-width:440px; margin-inline:auto; }
+      .weeks,.amber .weeks,.violet .weeks,.rose .weeks { grid-template-columns:1fr 1fr; }
+      .phase-head { grid-template-columns:108px 1fr; align-items:center; }
+      .phase-meta { grid-column:2; justify-self:start; }
+      .phase-number { grid-row:1 / span 2; width:88px; height:75px; }
+      .rhythm-grid { grid-template-columns:1fr 1fr; }
+      .flow { grid-template-columns:repeat(3,1fr); }
+      .flow-step:nth-child(3)::after { display:none; }
+      .flow-step:nth-child(n+4) { margin-top:4px; }
+    }
+    @media (max-width:620px){
+      .shell { width:min(100% - 28px,1180px); }
+      h1 { font-size:49px; }
+      .hero::before { width:80px; height:80px; border-width:15px; top:16px; right:-30px; }
+      .stat-strip { grid-template-columns:1fr 1fr; gap:9px; }
+      .hero-grid { gap:34px; }
+      .loop-card { padding:21px 15px; min-height:360px; box-shadow:6px 6px 0 var(--line); transform:none; }
+      .loop-label { font-size:8.5px; padding:5px; }
+      .l3{left:43%;}.l6{left:44%}.l1{left:1%}.l8{left:0}
+      .intro { padding-top:58px; gap:20px; }
+      .pipeline-wrap { padding-bottom:58px; }
+      .pipeline { grid-template-columns:1fr; margin-left:8px; gap:0; }
+      .pipeline::before { left:30px; right:auto; top:0; bottom:0; height:auto; border-top:0; border-left:5px dotted var(--line); }
+      .phase-node { display:grid; grid-template-columns:66px 1fr; grid-template-rows:auto auto; text-align:left; padding:7px 8px 18px 0; min-height:78px; }
+      .dot { grid-row:1 / span 2; width:50px; height:50px; margin:3px 0 0 4px; }
+      .phase-node small { align-self:end; }
+      .phase-node strong { align-self:start; }
+      .phase-node.active::after { left:48px; top:-10px; transform:rotate(-7deg); }
+      .milestones { grid-template-columns:1fr 1fr; }
+      .milestone:last-child { grid-column:1 / -1; }
+      .phase { padding:66px 0 76px; }
+      .phase::after { width:34px; height:34px; right:-6px; top:34px; }
+      .phase-head { grid-template-columns:72px 1fr; gap:14px; }
+      .phase-number { width:62px; height:58px; font-size:38px; box-shadow:4px 4px 0 var(--line); }
+      .phase-meta { font-size:10px; padding:8px; }
+      .weeks,.amber .weeks,.violet .weeks,.rose .weeks { grid-template-columns:1fr; }
+      .week { box-shadow:5px 5px 0 var(--line); }
+      .week:nth-child(n){ transform:none; }
+      .week-top { padding:20px 17px 17px; }
+      .rhythm-grid { grid-template-columns:1fr; }
+      .rhythm-item { padding:22px; transform:none!important; }
+      .architecture { padding:21px 14px; box-shadow:5px 5px 0 var(--line); }
+      .flow { grid-template-columns:1fr; gap:27px; }
+      .flow-step { transform:none!important; }
+      .flow-step:not(:last-child)::after { display:block!important; content:"↓"; top:auto; bottom:-23px; right:50%; transform:translateX(50%); animation-name:arrow-nudge-down; }
+      .flow-step:nth-child(n+4) { margin-top:0; }
+      .question-list { grid-template-columns:1fr; }
+      .stack-grid { gap:30px; }
+      footer .shell { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
+  <nav class="scroll-rail" aria-label="Jump to roadmap phase">
+    <a href="#phase-1" aria-label="Phase 1: Foundations" style="--rail-color:var(--blue)">01</a>
+    <a href="#phase-2" aria-label="Phase 2: Containers and CI/CD" style="--rail-color:var(--green)">02</a>
+    <a href="#phase-3" aria-label="Phase 3: Cloud and Kubernetes" style="--rail-color:var(--amber)">03</a>
+    <a href="#phase-4" aria-label="Phase 4: Infrastructure as Code and Observability" style="--rail-color:var(--violet)">04</a>
+    <a href="#phase-5" aria-label="Phase 5: Get hired" style="--rail-color:var(--rose)">05</a>
+  </nav>
+  <main>
+    <section class="hero">
+      <div class="shell hero-grid">
+        <div>
+          <div class="prompt-line">roadmap.init("job-ready")</div>
+          <h1>Zero to<br>DevOps hired.</h1>
+          <p class="hero-copy">A focused 14-week path from Linux fundamentals to one deployable, observable cloud project—built at 3 hours a day.</p>
+          <div class="stat-strip" aria-label="Roadmap at a glance">
+            <div class="stat"><strong>14</strong><span>weeks</span></div>
+            <div class="stat"><strong>21h</strong><span>each week</span></div>
+            <div class="stat"><strong>05</strong><span>phases</span></div>
+            <div class="stat"><strong>01</strong><span>capstone</span></div>
+          </div>
+          <div class="current">
+            <i class="pulse" aria-hidden="true"></i>
+            <div><b>You are here · Phase 1</b><span>Foundations · Plan: 22 Sep 2026 → 28 Dec 2026.</span></div>
+          </div>
+        </div>
+        <aside class="loop-card" aria-label="The DevOps lifecycle">
+          <h2 class="loop-title">The DevOps loop</h2>
+          <p class="loop-sub">Continuous delivery, feedback, and improvement.</p>
+          <div class="loop-visual">
+            <svg viewBox="0 0 420 300" role="img" aria-label="Infinity loop connecting plan, code, build, test, release, deploy, operate, and monitor">
+              <path class="loop-path" d="M38 150 C38 60 145 52 210 150 C275 248 382 240 382 150 C382 60 275 52 210 150 C145 248 38 240 38 150Z"/>
+              <path class="loop-active" d="M38 150 C38 60 145 52 210 150 C275 248 382 240 382 150 C382 60 275 52 210 150 C145 248 38 240 38 150Z"/>
+            </svg>
+            <span class="loop-label l1">Plan</span><span class="loop-label l2">Code</span><span class="loop-label l3">Build</span><span class="loop-label l4">Test</span>
+            <span class="loop-label l5">Release</span><span class="loop-label l6">Deploy</span><span class="loop-label l7">Operate</span><span class="loop-label l8">Monitor</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="shell intro">
+      <div><span class="section-tag">01 / MENTAL MODEL</span><h2>What DevOps actually is</h2></div>
+      <p class="definition">A way for development and operations to ship <em>small changes safely</em>, automate the repeatable work, and learn quickly from production.</p>
+    </section>
+
+    <nav class="shell pipeline-wrap" aria-label="Roadmap phases">
+      <span class="section-tag">THE PATH</span>
+      <div class="pipeline">
+        <a class="phase-node active" href="#phase-1" style="--phase:var(--blue)"><i class="dot"></i><small>WEEKS 01–03</small><strong>Foundations</strong></a>
+        <a class="phase-node" href="#phase-2" style="--phase:var(--green)"><i class="dot"></i><small>WEEKS 04–06</small><strong>Containers & CI/CD</strong></a>
+        <a class="phase-node" href="#phase-3" style="--phase:var(--amber)"><i class="dot"></i><small>WEEKS 07–10</small><strong>Cloud & Kubernetes</strong></a>
+        <a class="phase-node" href="#phase-4" style="--phase:var(--violet)"><i class="dot"></i><small>WEEKS 11–12</small><strong>IaC & Observability</strong></a>
+        <a class="phase-node" href="#phase-5" style="--phase:var(--rose)"><i class="dot"></i><small>WEEKS 13–14</small><strong>Get hired</strong></a>
+      </div>
+      <div class="milestones" aria-label="Roadmap milestones">
+        <div class="milestone"><time datetime="2026-10-12">12 Oct</time><span>Phase 1 done</span></div>
+        <div class="milestone"><time datetime="2026-11-02">2 Nov</time><span>Phase 2 done</span></div>
+        <div class="milestone"><time datetime="2026-11-30">30 Nov</time><span>Phase 3 done</span></div>
+        <div class="milestone"><time datetime="2026-12-14">14 Dec</time><span>Phase 4 done</span></div>
+        <div class="milestone"><time datetime="2026-12-28">28 Dec</time><span>Job-ready target</span></div>
+      </div>
+    </nav>
+
+    <section class="phase" id="phase-1"><div class="shell">
+      <header class="phase-head"><div class="phase-number">01</div><h2>Foundations</h2><span class="phase-meta">WEEKS 01—03</span></header>
+      <div class="weeks">
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 01</span><time class="week-date" datetime="2026-09-22/2026-09-28">22 Sep → 28 Sep 2026</time><h3>Linux</h3><ul class="topics"><li>filesystem</li><li>permissions</li><li>users</li><li>processes</li><li>systemd</li><li>logs</li><li>SSH</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/playlist?list=PLBGx66SQNZ8aPsFDwb79JrS2KQBTIZo10" target="_blank" rel="noopener noreferrer">Guftgu · Linux from scratch</a><a href="https://www.youtube.com/watch?v=e01GGTKmtpc" target="_blank" rel="noopener noreferrer">Linux one-shot</a><a href="https://www.youtube.com/watch?v=rWKzvoexJgQ" target="_blank" rel="noopener noreferrer">WSL + SSH setup</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Set up a Linux VM or WSL. Live in the terminal for a week.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Navigate, manage services, and SSH into a server without a guide.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 02</span><time class="week-date" datetime="2026-09-29/2026-10-05">29 Sep → 5 Oct 2026</time><h3>Bash + Git</h3><ul class="topics"><li>variables</li><li>loops</li><li>cron</li><li>branch</li><li>merge</li><li>rebase</li><li>PRs</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/playlist?list=PLBGx66SQNZ8aPsFDwb79JrS2KQBTIZo10" target="_blank" rel="noopener noreferrer">Guftgu · Git sections</a><a href="http://www.youtube.com/playlist?list=PL2fAIjQCyjRioKzj80gfQ5lhYffIukOlL" target="_blank" rel="noopener noreferrer">Shell scripting playlist</a><a href="https://www.youtube.com/watch?v=gwWKnnCMQ5c" target="_blank" rel="noopener noreferrer">Git & GitHub</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Write three utility scripts and push everything to GitHub.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Script a backup task and handle a merge conflict calmly.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 03</span><time class="week-date" datetime="2026-10-06/2026-10-12">6 Oct → 12 Oct 2026</time><h3>Networking + YAML</h3><ul class="topics"><li>TCP/IP</li><li>DNS</li><li>HTTP/S</li><li>ports</li><li>firewalls</li><li>Nginx</li><li>YAML</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=xN3BKHji12I&amp;list=PLlfy9GnSVerQjeoYfoYKEMS1yKl89NOvL&amp;index=1" target="_blank" rel="noopener noreferrer">Networking one-shot</a><a href="https://www.youtube.com/watch?v=RbKcojRIX7c" target="_blank" rel="noopener noreferrer">YAML masterclass</a><a href="https://www.youtube.com/watch?v=QoaB1JH8L3A" target="_blank" rel="noopener noreferrer">Networking hands-on</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Configure firewall rules and put Nginx in front of an app.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Explain what happens when you type a URL, step by step.</p></div></div></div></article>
+      </div>
+    </div></section>
+
+    <section class="phase green" id="phase-2"><div class="shell">
+      <header class="phase-head"><div class="phase-number">02</div><h2>Containers & CI/CD</h2><span class="phase-meta">WEEKS 04—06</span></header>
+      <div class="weeks">
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 04</span><time class="week-date" datetime="2026-10-13/2026-10-19">13 Oct → 19 Oct 2026</time><h3>Docker</h3><ul class="topics"><li>images</li><li>containers</li><li>Dockerfile</li><li>layers</li><li>volumes</li><li>networks</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/playlist?list=PLBGx66SQNZ8aPsFDwb79JrS2KQBTIZo10" target="_blank" rel="noopener noreferrer">Guftgu · Docker sections</a><a href="https://www.youtube.com/watch?v=X3Wtjwu0vBI" target="_blank" rel="noopener noreferrer">Complete Docker</a><a href="https://www.youtube.com/watch?v=N2zsWYp8Ckc" target="_blank" rel="noopener noreferrer">Alt · Docker 2026</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Containerize a small app and publish the image to Docker Hub.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Write a Dockerfile from scratch and debug a failing build.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 05</span><time class="week-date" datetime="2026-10-20/2026-10-26">20 Oct → 26 Oct 2026</time><h3>Compose + registries</h3><ul class="topics"><li>Compose</li><li>multi-container</li><li>env config</li><li>registries</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=OhnTMWmfTBE" target="_blank" rel="noopener noreferrer">Docker course · Compose chapters</a><a href="https://www.youtube.com/watch?v=nSQW3iBwl7A" target="_blank" rel="noopener noreferrer">Compose file explained</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Run an app, database, and cache together as one stack.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p><span class="mono">docker compose up</span> brings the stack to life.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 06</span><time class="week-date" datetime="2026-10-27/2026-11-02">27 Oct → 2 Nov 2026</time><h3>CI/CD pipelines</h3><ul class="topics"><li>CI/CD</li><li>GitHub Actions</li><li>build</li><li>test</li><li>push</li><li>deploy</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/playlist?list=PLBGx66SQNZ8aPsFDwb79JrS2KQBTIZo10" target="_blank" rel="noopener noreferrer">Guftgu · Jenkins</a><a href="https://www.youtube.com/watch?v=Lj-ubXtYeWY" target="_blank" rel="noopener noreferrer">GitHub Actions masterclass</a><a href="https://www.youtube.com/watch?v=ookIfjc8dW0" target="_blank" rel="noopener noreferrer">Alt · Actions tutorial</a><a href="https://www.youtube.com/playlist?list=PL6XT0grm_Tfi21F8O0TvHmb78P2uEmhDq" target="_blank" rel="noopener noreferrer">Jenkins playlist</a></p><p>Skim Guftgu Maven + Chef; cap both at 2 days.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Test code, build an image, and push it on every commit.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>A <span class="mono">git push</span> triggers a green pipeline end to end.</p></div></div></div></article>
+      </div>
+    </div></section>
+
+    <section class="rhythm"><div class="shell rhythm-grid">
+      <div class="rhythm-item"><span class="section-tag">DAILY RHYTHM</span><strong class="big">Learn less.<br>Build more.</strong></div>
+      <div class="rhythm-item"><strong>2 hrs learn → 1 hr build</strong><span>Every day. No passive-only study.</span></div>
+      <div class="rhythm-item"><strong>30 min review</strong><span>Every Sunday: recall, notes, and weak spots.</span></div>
+      <div class="rhythm-item"><strong>Stuck over 1 hour?</strong><span>Ask, debug deliberately, then document the fix.</span></div>
+    </div></section>
+
+    <section class="phase amber" id="phase-3"><div class="shell">
+      <header class="phase-head"><div class="phase-number">03</div><h2>Cloud & Kubernetes</h2><span class="phase-meta">WEEKS 07—10</span></header>
+      <div class="weeks">
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 07</span><time class="week-date" datetime="2026-11-03/2026-11-09">3 Nov → 9 Nov 2026</time><h3>AWS core</h3><ul class="topics"><li>IAM</li><li>least privilege</li><li>EC2</li><li>S3</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=1SkEXDqrzoM" target="_blank" rel="noopener noreferrer">AWS Cloud Practitioner 2026</a><a href="https://www.youtube.com/watch?v=BFQ3eObNs90" target="_blank" rel="noopener noreferrer">Alt · SAA labs</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Launch EC2 and host a static site on S3.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Explain roles vs users and secure an S3 bucket correctly.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 08</span><time class="week-date" datetime="2026-11-10/2026-11-16">10 Nov → 16 Nov 2026</time><h3>AWS networking</h3><ul class="topics"><li>VPC</li><li>subnets</li><li>security groups</li><li>load balancers</li><li>RDS</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=J3qHvMxlIk8" target="_blank" rel="noopener noreferrer">VPC explained</a><a href="https://www.youtube.com/watch?v=dgBks_DpUag" target="_blank" rel="noopener noreferrer">VPC hands-on</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Put app servers in private subnets behind a load balancer.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Draw the VPC architecture from memory.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 09</span><time class="week-date" datetime="2026-11-17/2026-11-23">17 Nov → 23 Nov 2026</time><h3>Kubernetes basics</h3><ul class="topics"><li>pods</li><li>Deployments</li><li>Services</li><li>ConfigMaps</li><li>Secrets</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/playlist?list=PLBGx66SQNZ8aPsFDwb79JrS2KQBTIZo10" target="_blank" rel="noopener noreferrer">Guftgu · Kubernetes</a><a href="https://www.youtube.com/watch?v=PHpsMvp58Ps" target="_blank" rel="noopener noreferrer">Kubernetes full course 2026</a><a href="https://www.youtube.com/watch?v=vrrUv7gDzR8" target="_blank" rel="noopener noreferrer">Alt · K8s mastery</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Create a local cluster and deploy the containerized app.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Deploy, scale, and roll back with <span class="mono">kubectl</span>.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 10</span><time class="week-date" datetime="2026-11-24/2026-11-30">24 Nov → 30 Nov 2026</time><h3>Kubernetes in practice</h3><ul class="topics"><li>Ingress</li><li>volumes</li><li>Helm</li><li>resource limits</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p>Continue the W9 course’s Volumes, Helm, and EKS chapters.</p><p class="watch-links"><a href="https://www.youtube.com/watch?v=RjnRpGcSzhU" target="_blank" rel="noopener noreferrer">Helm chart from scratch</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Package the app as a Helm chart; deploy to a managed cluster.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>One Helm command deploys the full app.</p></div></div></div></article>
+      </div>
+    </div></section>
+
+    <section class="phase violet" id="phase-4"><div class="shell">
+      <header class="phase-head"><div class="phase-number">04</div><h2>IaC & Observability</h2><span class="phase-meta">WEEKS 11—12</span></header>
+      <div class="weeks">
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 11</span><time class="week-date" datetime="2026-12-01/2026-12-07">1 Dec → 7 Dec 2026</time><h3>Terraform</h3><ul class="topics"><li>resources</li><li>state</li><li>variables</li><li>modules</li><li>IaC</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/playlist?list=PLlfy9GnSVerQzwhT644uP14iqZa0ZC4pn" target="_blank" rel="noopener noreferrer">TrainWithShubham · Terraform</a><a href="https://www.youtube.com/playlist?list=PL6XT0grm_TfgdaAjTmLb4QedMCCMQHISm" target="_blank" rel="noopener noreferrer">Alt · Terraform in Hindi</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Provision the entire AWS setup from Phase 3 as code.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Destroy and recreate the infrastructure with two commands.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 12</span><time class="week-date" datetime="2026-12-08/2026-12-14">8 Dec → 14 Dec 2026</time><h3>Monitoring + logging</h3><ul class="topics"><li>Prometheus</li><li>Grafana</li><li>alerts</li><li>central logs</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=DXZUunEeHqM" target="_blank" rel="noopener noreferrer">Prometheus + Grafana on K8s</a><a href="https://www.youtube.com/watch?v=YMSSqv2wuXQ" target="_blank" rel="noopener noreferrer">Alt · Monitoring part 1</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Monitor the Kubernetes app and set an alert that actually fires.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Your alert reaches you before a user would notice.</p></div></div></div></article>
+      </div>
+    </div></section>
+
+    <section class="phase rose" id="phase-5"><div class="shell">
+      <header class="phase-head"><div class="phase-number">05</div><h2>Build proof. Get hired.</h2><span class="phase-meta">WEEKS 13—14</span></header>
+      <div class="architecture">
+        <h3>One end-to-end capstone</h3><p>Every phase becomes one coherent deployment story.</p>
+        <div class="flow" aria-label="Capstone architecture flow">
+          <div class="flow-step"><svg viewBox="0 0 24 24"><path d="M8 3H5a2 2 0 0 0-2 2v14h18V5a2 2 0 0 0-2-2h-3M7 8h10M7 12h10M7 16h6"/></svg><b>GitHub</b><span>source</span></div>
+          <div class="flow-step"><svg viewBox="0 0 24 24"><path d="M5 12h14M14 7l5 5-5 5"/></svg><b>Actions</b><span>CI pipeline</span></div>
+          <div class="flow-step"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4-8 4-8-4ZM4 12l8 4 8-4M4 16l8 4 8-4"/></svg><b>Docker Hub</b><span>image</span></div>
+          <div class="flow-step"><svg viewBox="0 0 24 24"><path d="M7 3h10v6H7zM3 15h7v6H3zM14 15h7v6h-7zM12 9v3M6.5 15v-3h11v3"/></svg><b>Terraform</b><span>provision</span></div>
+          <div class="flow-step"><svg viewBox="0 0 24 24"><path d="M6 18a4 4 0 0 1 .7-7.9A6 6 0 0 1 18.2 8 5 5 0 0 1 18 18H6Z"/></svg><b>AWS</b><span>EKS · RDS · S3</span></div>
+          <div class="flow-step"><svg viewBox="0 0 24 24"><path d="M4 18V9M10 18V5M16 18v-7M22 18V3"/></svg><b>Observe</b><span>Prometheus · Grafana</span></div>
+        </div>
+      </div>
+      <div class="weeks">
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 13</span><time class="week-date" datetime="2026-12-15/2026-12-21">15 Dec → 21 Dec 2026</time><h3>Capstone project</h3><ul class="topics"><li>architecture</li><li>automation</li><li>README</li><li>trade-offs</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=Kbvch_swZWA" target="_blank" rel="noopener noreferrer">Live K8s + ArgoCD project</a><a href="https://www.youtube.com/watch?v=NJZKEme-8AE" target="_blank" rel="noopener noreferrer">Alt · Jenkins → Ansible → Docker</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>BUILD</b><p>Ship the full flow above with setup steps and a clear architecture diagram.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>A stranger can deploy it from the README alone.</p></div></div></div></article>
+        <article class="week"><div class="week-top"><span class="week-id">WEEK 14</span><time class="week-date" datetime="2026-12-22/2026-12-28">22 Dec → 28 Dec 2026</time><h3>Resume + applications</h3><ul class="topics"><li>one-page resume</li><li>GitHub</li><li>LinkedIn</li><li>interviews</li></ul></div><div class="week-notes"><div class="note"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7Z"/></svg><div><b>WATCH + READ</b><p class="watch-links"><a href="https://www.youtube.com/watch?v=zxZHOEdGE08" target="_blank" rel="noopener noreferrer">DevOps interview Q&amp;A</a><a href="https://www.guru99.com/hi/devops-interview-questions.html" target="_blank" rel="noopener noreferrer">Top 50 questions in Hindi</a></p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M4 17l5-5-5-5M11 19h9"/></svg><div><b>EXECUTE</b><p>Lead with projects, add measurable outcomes, and send five tailored applications a day.</p></div></div><div class="note"><svg viewBox="0 0 24 24"><path d="M5 12l4 4L19 6"/></svg><div><b>DONE WHEN</b><p>Resume reviewed, profiles polished, first 10 applications sent.</p></div></div></div></article>
+      </div>
+      <div class="interview"><div><span class="section-tag">INTERVIEW DRILL</span><h3>Explain it without hiding behind commands.</h3><p class="lede">Answer out loud, then sketch the system.</p></div><ul class="question-list"><li>What is CI/CD?</li><li>Image vs container?</li><li>Explain a Deployment.</li><li>How do you manage Terraform state?</li><li>Blue-green vs rolling?</li><li>Debug CrashLoopBackOff?</li></ul></div>
+    </div></section>
+
+    <section class="stack"><div class="shell stack-grid">
+      <div><span class="section-tag">YOUR STACK</span><h2>Fourteen tools.<br>One working system.</h2><p class="lede">Learn tools in context, not as disconnected tutorials.</p></div>
+      <div class="badge-grid" aria-label="Tools covered"><span class="badge">Linux</span><span class="badge">Bash</span><span class="badge">Git</span><span class="badge">YAML</span><span class="badge">Nginx</span><span class="badge">Docker</span><span class="badge">Compose</span><span class="badge">GitHub Actions</span><span class="badge">AWS</span><span class="badge">Kubernetes</span><span class="badge">Helm</span><span class="badge">Terraform</span><span class="badge">Prometheus</span><span class="badge">Grafana</span></div>
+    </div></section>
+  </main>
+  <footer><div class="shell"><span>Start with the terminal. Finish with proof.</span><span class="mono">14 weeks · 3 hours/day</span></div></footer>
+  <script>
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var progressBar = document.querySelector('.scroll-progress i');
+      var railLinks = Array.prototype.slice.call(document.querySelectorAll('.scroll-rail a'));
+      var sections = Array.prototype.slice.call(document.querySelectorAll('.phase[id]'));
+      var loopVisual = document.querySelector('.loop-visual');
+      var ticking = false;
+
+      function clamp(value, min, max) { return Math.max(min, Math.min(max, value)); }
+
+      function paintScroll() {
+        var maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+        var progress = clamp(window.scrollY / maxScroll, 0, 1);
+        progressBar.style.transform = 'scaleX(' + progress + ')';
+
+        var marker = window.scrollY + window.innerHeight * 0.42;
+        var currentId = sections.length ? sections[0].id : '';
+        sections.forEach(function (section) {
+          if (section.offsetTop <= marker) currentId = section.id;
+          if (!reduceMotion) {
+            var rect = section.getBoundingClientRect();
+            var shift = clamp((window.innerHeight * 0.5 - rect.top) * 0.035, -16, 24);
+            section.style.setProperty('--shape-shift', shift.toFixed(1) + 'px');
+          }
+        });
+        railLinks.forEach(function (link) {
+          var active = link.getAttribute('href') === '#' + currentId;
+          link.classList.toggle('is-current', active);
+          if (active) link.setAttribute('aria-current', 'step');
+          else link.removeAttribute('aria-current');
+        });
+
+        if (!reduceMotion && loopVisual) {
+          loopVisual.style.setProperty('--loop-parallax', clamp(window.scrollY * 0.045, 0, 22).toFixed(1) + 'px');
+        }
+        ticking = false;
+      }
+
+      function requestPaint() {
+        if (ticking) return;
+        ticking = true;
+        window.requestAnimationFrame(paintScroll);
+      }
+
+      window.addEventListener('scroll', requestPaint, { passive: true });
+      window.addEventListener('resize', requestPaint);
+      paintScroll();
+
+      if (reduceMotion) return;
+
+      var groups = [
+        ['.intro > *', 'reveal-stamp'],
+        ['.phase-node', 'reveal-stamp'],
+        ['.milestone', 'reveal-stamp'],
+        ['.phase-head > *', 'reveal-stamp'],
+        ['.week', ''],
+        ['.rhythm-item', 'reveal-stamp'],
+        ['.architecture', 'reveal-stamp'],
+        ['.flow-step', 'reveal-stamp'],
+        ['.interview > *', ''],
+        ['.stack-grid > *', ''],
+        ['.badge', 'reveal-stamp']
+      ];
+      var targets = [];
+
+      groups.forEach(function (group) {
+        document.querySelectorAll(group[0]).forEach(function (element, index) {
+          element.classList.add('reveal-target');
+          if (group[1]) element.classList.add(group[1]);
+          element.style.setProperty('--reveal-delay', Math.min(index * 90, 360) + 'ms');
+          targets.push(element);
+        });
+      });
+
+      if (!('IntersectionObserver' in window)) {
+        targets.forEach(function (element) { element.classList.add('is-visible'); });
+        return;
+      }
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px -10% 0px', threshold: 0.12 });
+
+      targets.forEach(function (element) { observer.observe(element); });
+    }());
+  </script>
+</body>
+</html>
