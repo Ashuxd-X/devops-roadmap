@@ -10,6 +10,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=IBM+Plex+Mono:wght@500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <title>DevOps Roadmap — Zero to Hired</title>
+  <meta name="description" content="A beginner-friendly 14-week DevOps roadmap — from Linux fundamentals to one deployable, observable cloud project, at 3 hours a day." />
+  <script>
+    (function(){try{var t=localStorage.getItem('drm-theme');if(!t){t=window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}document.documentElement.setAttribute('data-theme',t);}catch(e){document.documentElement.setAttribute('data-theme','light');}})();
+  </script>
   <style>
     :root {
       color-scheme: light dark;
@@ -375,10 +379,186 @@
     .pdf-btn { display:inline-block; margin-top:14px; padding:12px 18px; border:3px solid var(--line); background:var(--yellow); box-shadow:var(--shadow-small); color:var(--ink); text-decoration:none; font:700 12px/1 "IBM Plex Mono",monospace; }
     .pdf-btn:hover { transform:translate(-2px,-2px); box-shadow:5px 5px 0 var(--line); }
 
+    /* ===== Next-level upgrade: dark theme, controls, progress, motion ===== */
+    ::selection { background: var(--rose); color: #fff; }
+
+    /* Memphis after dark */
+    html[data-theme="dark"] {
+      --bg: #171310;
+      --paper: #221d16;
+      --text: #f6f0e2;
+      --muted: #c8bda6;
+      --line: #f6f0e2;
+      --shadow: 7px 7px 0 #f6f0e2;
+      --shadow-small: 4px 4px 0 #f6f0e2;
+      color-scheme: dark;
+    }
+    html[data-theme="dark"] body {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='42' height='42' viewBox='0 0 42 42'%3E%3Ccircle cx='4' cy='4' r='1.6' fill='%23f6f0e2' opacity='.14'/%3E%3C/svg%3E");
+    }
+    html[data-theme="dark"] .phase::before {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='34' height='18' viewBox='0 0 34 18'%3E%3Cpath d='M0 16L8.5 3 17 16 25.5 3 34 16' fill='none' stroke='%23f6f0e2' stroke-width='4'/%3E%3C/svg%3E");
+    }
+    html[data-theme="dark"] .topics li,
+    html[data-theme="dark"] .week-id { color: var(--text); }
+    html[data-theme="dark"] .loop-label { color: var(--ink); }
+    html[data-theme="dark"] .stat strong { color: var(--ink); }
+    html[data-theme="dark"] .note svg { stroke: var(--text); }
+    html[data-theme="dark"] .loop-title,
+    html[data-theme="dark"] .architecture h3 { color: var(--ink); }
+    html[data-theme="dark"] .loop-sub,
+    html[data-theme="dark"] .architecture > p { color: #4a4438; }
+
+    /* Sticky control bar: progress + search + theme */
+    .topbar {
+      position: sticky; top: 0; z-index: 95;
+      background: var(--paper); border-bottom: 3px solid var(--line);
+    }
+    .topbar-inner {
+      display: flex; align-items: center; gap: 10px;
+      width: min(1180px, calc(100% - 40px)); margin: 0 auto; padding: 8px 0;
+    }
+    .progress-pill {
+      display: inline-flex; align-items: center; gap: 9px; flex: none;
+      padding: 8px 11px; background: var(--mint); color: var(--ink);
+      border: 3px solid var(--line); box-shadow: 3px 3px 0 var(--line);
+      font: 700 11px/1 "IBM Plex Mono", monospace; white-space: nowrap;
+      transform: rotate(-1deg); cursor: pointer;
+    }
+    .progress-pill:hover { transform: rotate(-1deg) translate(1px,1px); box-shadow: 2px 2px 0 var(--line); }
+    .progress-pill:focus-visible { outline: 3px solid var(--rose); outline-offset: 2px; }
+    .progress-track { width: 74px; height: 10px; background: var(--paper); border: 2px solid var(--line); }
+    .progress-track i { display: block; height: 100%; width: 0; background: var(--rose); transition: width .5s cubic-bezier(.2,.8,.2,1); }
+    .reset-btn {
+      display: inline-grid; place-items: center; width: 36px; height: 36px; flex: none;
+      background: var(--paper); color: var(--ink); border: 3px solid var(--line);
+      box-shadow: 3px 3px 0 var(--line); cursor: pointer; transform: rotate(2deg);
+      font: 700 15px/1 "IBM Plex Mono", monospace;
+    }
+    .reset-btn[hidden] { display: none; }
+    .reset-btn:hover { transform: rotate(2deg) translate(1px,1px); box-shadow: 2px 2px 0 var(--line); }
+    .search-wrap { position: relative; flex: 1; min-width: 0; display: flex; }
+    .search-wrap input {
+      flex: 1; min-width: 0; padding: 10px 36px 10px 12px;
+      border: 3px solid var(--line); background: var(--bg); color: var(--text);
+      box-shadow: 3px 3px 0 var(--line); font: 600 13px/1.2 "Space Grotesk", sans-serif;
+    }
+    .search-wrap input::placeholder { color: var(--muted); }
+    .search-wrap input::-webkit-search-cancel-button { display: none; }
+    .search-wrap input:focus { outline: 3px solid var(--rose); outline-offset: 2px; }
+    .search-clear {
+      position: absolute; right: 7px; top: 50%; translate: 0 -50%;
+      width: 24px; height: 24px; display: none; place-items: center;
+      background: var(--rose); color: #fff; border: 2px solid var(--line);
+      cursor: pointer; font: 700 13px/1 "IBM Plex Mono", monospace;
+    }
+    .search-wrap.has-query .search-clear { display: grid; }
+    .search-count { font: 700 10px/1 "IBM Plex Mono", monospace; color: var(--muted); white-space: nowrap; }
+    .theme-toggle {
+      display: inline-grid; place-items: center; width: 42px; height: 42px; flex: none;
+      background: var(--yellow); color: var(--ink); border: 3px solid var(--line);
+      box-shadow: 3px 3px 0 var(--line); cursor: pointer; transform: rotate(-2deg); font-size: 18px;
+    }
+    .theme-toggle:hover { transform: rotate(-2deg) translate(1px,1px); box-shadow: 2px 2px 0 var(--line); }
+    .theme-toggle:focus-visible { outline: 3px solid var(--rose); outline-offset: 2px; }
+
+    /* Ticker band */
+    .ticker {
+      overflow: hidden; background: var(--rose);
+      border-top: 4px solid var(--line); border-bottom: 4px solid var(--line);
+      transform: rotate(-1deg) scale(1.02); margin: 6px 0 0;
+    }
+    .ticker-track { display: flex; width: max-content; animation: ticker-scroll 28s linear infinite; }
+    .ticker:hover .ticker-track { animation-play-state: paused; }
+    .ticker-track span {
+      padding: 13px 16px; color: #fff; white-space: nowrap;
+      font: 700 13px/1 "IBM Plex Mono", monospace; letter-spacing: .14em;
+    }
+    .ticker-track span:nth-child(even) { color: var(--yellow); }
+    @keyframes ticker-scroll { to { transform: translateX(-50%); } }
+
+    /* Week completion */
+    .week { position: relative; }
+    .done-toggle {
+      display: block; width: 100%; margin-top: 14px; padding: 10px;
+      background: var(--paper); color: var(--ink); border: 3px solid var(--line);
+      box-shadow: 3px 3px 0 var(--line); cursor: pointer;
+      font: 700 11px/1 "IBM Plex Mono", monospace; letter-spacing: .08em;
+      transition: transform .15s ease, box-shadow .15s ease, background .2s ease;
+    }
+    .done-toggle:hover { transform: translate(2px,2px); box-shadow: 1px 1px 0 var(--line); }
+    .done-toggle:focus-visible { outline: 3px solid var(--rose); outline-offset: 2px; }
+    .week.is-done .done-toggle { background: var(--mint); }
+    .week.is-done::after {
+      content: "DONE"; position: absolute; top: 16px; right: -34px; rotate: 35deg; z-index: 2;
+      background: var(--rose); color: #fff; border: 3px solid var(--line);
+      padding: 6px 36px; font: 700 11px/1 "IBM Plex Mono", monospace; letter-spacing: .16em;
+      box-shadow: 3px 3px 0 var(--line); pointer-events: none;
+    }
+    .phase.is-complete .phase-meta { background: var(--mint); }
+    .week.is-hidden, .phase.is-hidden { display: none; }
+
+    /* No-results notice */
+    .no-results {
+      display: none; margin: 30px auto; max-width: 560px; padding: 20px 22px; text-align: center;
+      background: var(--paper); border: 3px solid var(--line); box-shadow: var(--shadow-small);
+      font-weight: 600;
+    }
+    .no-results.is-visible { display: block; }
+    .no-results b { color: var(--rose); }
+
+    /* Back to top + confetti + cursor glow */
+    .to-top {
+      position: fixed; right: 18px; bottom: 18px; z-index: 90;
+      width: 52px; height: 52px; display: grid; place-items: center;
+      background: var(--yellow); color: var(--ink); border: 3px solid var(--line);
+      box-shadow: 4px 4px 0 var(--line); cursor: pointer;
+      font: 700 20px/1 "IBM Plex Mono", monospace;
+      opacity: 0; translate: 0 12px; pointer-events: none;
+      transition: opacity .25s ease, translate .25s ease;
+    }
+    .to-top.is-visible { opacity: 1; translate: 0 0; pointer-events: auto; }
+    .to-top:hover { transform: translate(2px,2px); box-shadow: 2px 2px 0 var(--line); }
+    .to-top:focus-visible { outline: 3px solid var(--rose); outline-offset: 2px; }
+    .confetti-layer { position: fixed; inset: 0; z-index: 200; pointer-events: none; overflow: hidden; }
+    .confetti-bit { position: absolute; width: 10px; height: 14px; }
+    .cursor-glow {
+      position: fixed; left: 0; top: 0; z-index: 60; width: 340px; height: 340px; margin: -170px 0 0 -170px;
+      border-radius: 50%; pointer-events: none; opacity: .55;
+      background: radial-gradient(circle, color-mix(in srgb, var(--rose) 15%, transparent), transparent 65%);
+    }
+    @media (pointer: coarse) { .cursor-glow { display: none; } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ticker-track { animation: none; }
+      .to-top, .progress-track i { transition: none; }
+      .cursor-glow { display: none; }
+    }
+    @media (max-width: 620px) {
+      .topbar-inner { flex-wrap: wrap; }
+      .search-wrap { order: 3; flex-basis: 100%; }
+      .to-top { right: 14px; bottom: 14px; width: 46px; height: 46px; }
+    }
+
   </style>
 </head>
 <body>
   <div class="scroll-progress" aria-hidden="true"><i></i></div>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <button class="progress-pill" id="progress-pill" title="Jump to your first incomplete week">
+        <span id="progress-label" aria-live="polite">0/14 weeks</span>
+        <span class="progress-track" aria-hidden="true"><i id="progress-fill"></i></span>
+      </button>
+      <button class="reset-btn" id="progress-reset" hidden title="Reset all progress" aria-label="Reset all progress">↺</button>
+      <div class="search-wrap" id="search-wrap">
+        <input id="site-search" type="search" placeholder="Search weeks, topics, tools…  ( press / )" aria-label="Search the roadmap" autocomplete="off" />
+        <button class="search-clear" id="search-clear" aria-label="Clear search">×</button>
+      </div>
+      <span class="search-count" id="search-count" hidden></span>
+      <button class="theme-toggle" id="theme-toggle" title="Toggle dark mode">☾</button>
+    </div>
+  </div>
   <nav class="scroll-rail" aria-label="Jump to roadmap phase">
     <a href="#phase-1" aria-label="Phase 1: Foundations" style="--rail-color:var(--blue)">01</a>
     <a href="#phase-2" aria-label="Phase 2: Containers and CI/CD" style="--rail-color:var(--green)">02</a>
@@ -387,6 +567,7 @@
     <a href="#phase-5" aria-label="Phase 5: Get hired" style="--rail-color:var(--rose)">05</a>
   </nav>
   <main>
+    <div class="shell no-results" id="no-results" role="status"><b>No weeks match.</b> Try “docker”, “aws”, or “terraform”.</div>
     <section class="hero">
       <div class="shell hero-grid">
         <div>
@@ -414,6 +595,8 @@
         </aside>
       </div>
     </section>
+
+    <div class="ticker" aria-hidden="true"><div class="ticker-track"><span>LINUX ✦</span><span>BASH ✦</span><span>GIT ✦</span><span>YAML ✦</span><span>NGINX ✦</span><span>DOCKER ✦</span><span>CI/CD ✦</span><span>AWS ✦</span><span>KUBERNETES ✦</span><span>HELM ✦</span><span>TERRAFORM ✦</span><span>PROMETHEUS ✦</span><span>GRAFANA ✦</span><span>LINUX ✦</span><span>BASH ✦</span><span>GIT ✦</span><span>YAML ✦</span><span>NGINX ✦</span><span>DOCKER ✦</span><span>CI/CD ✦</span><span>AWS ✦</span><span>KUBERNETES ✦</span><span>HELM ✦</span><span>TERRAFORM ✦</span><span>PROMETHEUS ✦</span><span>GRAFANA ✦</span></div></div>
 
     <section class="shell intro">
       <div><span class="section-tag">01 / MENTAL MODEL</span><h2>What DevOps actually is</h2></div>
@@ -507,6 +690,9 @@
     </div></section>
   </main>
   <footer><div class="shell"><span>Start with the terminal. Finish with proof.</span><span class="mono">14 weeks · 3 hours/day</span></div></footer>
+  <div class="cursor-glow" id="cursor-glow" aria-hidden="true"></div>
+  <div class="confetti-layer" id="confetti-layer" aria-hidden="true"></div>
+  <button class="to-top" id="to-top" aria-label="Back to top" title="Back to top">↑</button>
   <script>
     (function () {
       var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -597,6 +783,239 @@
 
       targets.forEach(function (element) { observer.observe(element); });
     }());
+  </script>
+  <script>
+    /* Next-level features: theme, progress tracking, search, count-ups, confetti, glow, back-to-top. */
+    (function () {
+      var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+      /* ---------- Theme toggle ---------- */
+      var themeToggle = document.getElementById('theme-toggle');
+      var metaTheme = document.querySelector('meta[name="theme-color"]');
+      function paintTheme() {
+        var dark = document.documentElement.getAttribute('data-theme') === 'dark';
+        themeToggle.textContent = dark ? '☀' : '☾';
+        themeToggle.setAttribute('aria-label', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        themeToggle.setAttribute('title', dark ? 'Switch to light mode' : 'Switch to dark mode');
+        if (metaTheme) metaTheme.setAttribute('content', dark ? '#171310' : '#fff8e7');
+      }
+      themeToggle.addEventListener('click', function () {
+        var next = document.documentElement.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        document.documentElement.setAttribute('data-theme', next);
+        try { localStorage.setItem('drm-theme', next); } catch (e) {}
+        paintTheme();
+      });
+      paintTheme();
+
+      /* ---------- Week progress tracking ---------- */
+      var STORE_KEY = 'drm-progress-v1';
+      var weeks = Array.prototype.slice.call(document.querySelectorAll('.week'));
+      var phases = Array.prototype.slice.call(document.querySelectorAll('.phase[id]'));
+      var done = {};
+      try {
+        (JSON.parse(localStorage.getItem(STORE_KEY)) || []).forEach(function (n) { done[n] = true; });
+      } catch (e) {}
+      function saveProgress() {
+        try { localStorage.setItem(STORE_KEY, JSON.stringify(Object.keys(done))); } catch (e) {}
+      }
+
+      var pill = document.getElementById('progress-pill');
+      var label = document.getElementById('progress-label');
+      var fill = document.getElementById('progress-fill');
+      var resetBtn = document.getElementById('progress-reset');
+      var confettiLayer = document.getElementById('confetti-layer');
+      var confettiColors = ['#ff4d8d', '#ffc700', '#00c2a8', '#3fa9f5', '#7b5cff', '#ff6b4a'];
+
+      function confetti(x, y) {
+        if (reduceMotion || !confettiLayer) return;
+        for (var i = 0; i < 26; i++) {
+          (function (i) {
+            var bit = document.createElement('i');
+            bit.className = 'confetti-bit';
+            var c = confettiColors[i % confettiColors.length];
+            bit.style.left = x + 'px';
+            bit.style.top = y + 'px';
+            var shape = i % 3;
+            if (shape === 1) {
+              bit.style.background = c;
+              bit.style.borderRadius = '50%';
+            } else if (shape === 2) {
+              bit.style.width = '0'; bit.style.height = '0'; bit.style.background = 'none';
+              bit.style.borderLeft = '7px solid transparent';
+              bit.style.borderRight = '7px solid transparent';
+              bit.style.borderBottom = '12px solid ' + c;
+            } else {
+              bit.style.background = c;
+              bit.style.border = '2px solid #111111';
+            }
+            confettiLayer.appendChild(bit);
+            var ang = Math.random() * Math.PI * 2;
+            var dist = 60 + Math.random() * 130;
+            var dx = Math.cos(ang) * dist;
+            var dy = Math.sin(ang) * dist - 60;
+            var anim = bit.animate([
+              { transform: 'translate(0,0) rotate(0deg)', opacity: 1 },
+              { transform: 'translate(' + dx.toFixed(0) + 'px,' + dy.toFixed(0) + 'px) rotate(' + (Math.random() * 540 - 270).toFixed(0) + 'deg)', opacity: 0 }
+            ], { duration: 750 + Math.random() * 450, easing: 'cubic-bezier(.2,.7,.3,1)' });
+            anim.onfinish = function () { bit.remove(); };
+          })(i);
+        }
+      }
+
+      function refreshProgress() {
+        var count = Object.keys(done).length;
+        var total = weeks.length;
+        label.textContent = count + '/' + total + ' weeks';
+        fill.style.width = (total ? (count / total * 100) : 0) + '%';
+        resetBtn.hidden = count === 0;
+        phases.forEach(function (phase) {
+          var pWeeks = Array.prototype.slice.call(phase.querySelectorAll('.week'));
+          var all = pWeeks.length > 0 && pWeeks.every(function (w) { return !!done[w.dataset.week]; });
+          phase.classList.toggle('is-complete', all);
+          var meta = phase.querySelector('.phase-meta');
+          if (meta) {
+            if (!meta.dataset.orig) meta.dataset.orig = meta.textContent;
+            meta.textContent = all ? meta.dataset.orig + ' ✓' : meta.dataset.orig;
+          }
+        });
+      }
+
+      function setWeek(n, w, btn, isDone, ev) {
+        if (isDone) { done[n] = true; } else { delete done[n]; }
+        w.classList.toggle('is-done', isDone);
+        btn.setAttribute('aria-pressed', isDone ? 'true' : 'false');
+        btn.textContent = isDone ? 'DONE ✓' : 'MARK WEEK DONE';
+        saveProgress();
+        refreshProgress();
+        if (isDone && ev && ev.clientX) confetti(ev.clientX, ev.clientY);
+      }
+
+      weeks.forEach(function (w, i) {
+        var n = String(i + 1).padStart(2, '0');
+        w.dataset.week = n;
+        var btn = document.createElement('button');
+        btn.className = 'done-toggle';
+        btn.type = 'button';
+        var isDone = !!done[n];
+        btn.setAttribute('aria-pressed', isDone ? 'true' : 'false');
+        btn.setAttribute('aria-label', 'Mark week ' + (i + 1) + ' as done');
+        btn.textContent = isDone ? 'DONE ✓' : 'MARK WEEK DONE';
+        if (isDone) w.classList.add('is-done');
+        btn.addEventListener('click', function (ev) { setWeek(n, w, btn, !done[n], ev); });
+        w.querySelector('.week-top').appendChild(btn);
+      });
+      refreshProgress();
+
+      pill.addEventListener('click', function () {
+        var next = weeks.filter(function (w) { return !w.classList.contains('is-done'); })[0] || weeks[0];
+        if (next) next.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+      });
+      resetBtn.addEventListener('click', function () {
+        if (!window.confirm('Reset all week progress?')) return;
+        done = {};
+        saveProgress();
+        weeks.forEach(function (w) {
+          w.classList.remove('is-done');
+          var btn = w.querySelector('.done-toggle');
+          if (btn) { btn.setAttribute('aria-pressed', 'false'); btn.textContent = 'MARK WEEK DONE'; }
+        });
+        refreshProgress();
+      });
+
+      /* ---------- Search ---------- */
+      var searchInput = document.getElementById('site-search');
+      var searchWrap = document.getElementById('search-wrap');
+      var searchClear = document.getElementById('search-clear');
+      var searchCount = document.getElementById('search-count');
+      var noResults = document.getElementById('no-results');
+      function runSearch() {
+        var q = searchInput.value.trim().toLowerCase();
+        searchWrap.classList.toggle('has-query', q.length > 0);
+        var visible = 0;
+        weeks.forEach(function (w) {
+          var hit = !q || w.textContent.toLowerCase().indexOf(q) > -1;
+          w.classList.toggle('is-hidden', !hit);
+          if (hit) visible++;
+        });
+        phases.forEach(function (p) {
+          var any = Array.prototype.some.call(p.querySelectorAll('.week'), function (w) {
+            return !w.classList.contains('is-hidden');
+          });
+          p.classList.toggle('is-hidden', !!q && !any);
+        });
+        if (q) {
+          searchCount.hidden = false;
+          searchCount.textContent = visible + ' match' + (visible === 1 ? '' : 'es');
+        } else {
+          searchCount.hidden = true;
+        }
+        noResults.classList.toggle('is-visible', !!q && visible === 0);
+      }
+      searchInput.addEventListener('input', runSearch);
+      searchClear.addEventListener('click', function () {
+        searchInput.value = '';
+        runSearch();
+        searchInput.focus();
+      });
+      searchInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter') {
+          var first = weeks.filter(function (w) { return !w.classList.contains('is-hidden'); })[0];
+          if (first) first.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'center' });
+        }
+      });
+      document.addEventListener('keydown', function (e) {
+        var tag = document.activeElement ? document.activeElement.tagName : '';
+        if (e.key === '/' && tag !== 'INPUT' && tag !== 'TEXTAREA') {
+          e.preventDefault();
+          searchInput.focus();
+        }
+      });
+
+      /* ---------- Animated hero counters ---------- */
+      document.querySelectorAll('.stat strong').forEach(function (el, idx) {
+        var m = /^(\d+)(.*)$/.exec(el.textContent.trim());
+        if (!m) return;
+        var target = parseInt(m[1], 10);
+        var suffix = m[2];
+        var pad = m[1].length;
+        if (reduceMotion || !(target > 0)) return;
+        var start = null;
+        var dur = 900;
+        function frame(t) {
+          if (!start) start = t;
+          var p = Math.min(1, (t - start) / dur);
+          var e = 1 - Math.pow(1 - p, 3);
+          el.textContent = String(Math.round(target * e)).padStart(pad, '0') + suffix;
+          if (p < 1) window.requestAnimationFrame(frame);
+        }
+        window.setTimeout(function () { window.requestAnimationFrame(frame); }, 260 + idx * 120);
+      });
+
+      /* ---------- Back to top ---------- */
+      var toTop = document.getElementById('to-top');
+      function paintToTop() { toTop.classList.toggle('is-visible', window.scrollY > 700); }
+      window.addEventListener('scroll', paintToTop, { passive: true });
+      paintToTop();
+      toTop.addEventListener('click', function () {
+        window.scrollTo({ top: 0, behavior: reduceMotion ? 'auto' : 'smooth' });
+      });
+
+      /* ---------- Cursor glow (fine pointers only) ---------- */
+      var glow = document.getElementById('cursor-glow');
+      if (finePointer && !reduceMotion && glow) {
+        var gx = window.innerWidth / 2, gy = 200, tx = gx, ty = gy;
+        document.addEventListener('mousemove', function (e) { tx = e.clientX; ty = e.clientY; }, { passive: true });
+        (function loop() {
+          gx += (tx - gx) * 0.12;
+          gy += (ty - gy) * 0.12;
+          glow.style.transform = 'translate(' + gx.toFixed(1) + 'px,' + gy.toFixed(1) + 'px)';
+          window.requestAnimationFrame(loop);
+        })();
+      } else if (glow) {
+        glow.style.display = 'none';
+      }
+    })();
   </script>
 </body>
 </html>
